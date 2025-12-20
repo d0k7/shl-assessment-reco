@@ -3,33 +3,20 @@ from __future__ import annotations
 from urllib.parse import urlparse, urlunparse
 
 
-def normalize_shl_url(url: str) -> str:
+def canonicalize_url(url: str) -> str:
     """
-    Normalize SHL catalog URLs so different site variants match:
-
-    - Remove '/solutions' prefix after domain
-      (e.g. https://www.shl.com/solutions/products/... -> https://www.shl.com/products/...)
-    - Strip trailing slash
-    - Keep scheme+netloc+path only (ignore query/fragment)
+    Normalize SHL URLs so duplicates don't break matching.
+    - force https
+    - strip fragments and query
+    - strip trailing slash
     """
+    url = (url or "").strip()
     if not url:
         return url
 
-    u = url.strip()
-    parsed = urlparse(u)
+    p = urlparse(url)
+    scheme = "https"
+    netloc = p.netloc.lower()
+    path = p.path.rstrip("/")
 
-    scheme = parsed.scheme or "https"
-    netloc = parsed.netloc or "www.shl.com"
-
-    path = parsed.path or ""
-    # remove trailing slash
-    if path.endswith("/"):
-        path = path[:-1]
-
-    # remove "/solutions" once at start
-    if path.startswith("/solutions/"):
-        path = path.replace("/solutions/", "/", 1)
-
-    # drop query/fragment
-    normalized = urlunparse((scheme, netloc, path, "", "", ""))
-    return normalized
+    return urlunparse((scheme, netloc, path, "", "", ""))

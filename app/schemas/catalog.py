@@ -1,17 +1,18 @@
 from __future__ import annotations
 
-from typing import List
-from pydantic import BaseModel, Field, HttpUrl
+from typing import List, Optional
+from pydantic import BaseModel, Field
 
 
 class CatalogItem(BaseModel):
-    url: HttpUrl
-    name: str = Field(..., min_length=1)
+    name: str
+    url: str
+    description: Optional[str] = None
 
-    adaptive_support: str = Field(default="No")
-    remote_support: str = Field(default="No")
-    duration: int = Field(default=0, ge=0)
-    description: str = Field(default="")
-    test_type: List[str] = Field(default_factory=list)
+    # SHL catalog has tags like ["K"], ["P"], etc.
+    test_type: Optional[List[str]] = Field(default_factory=list)
 
-    source: str = Field(default="shl")
+    # sometimes present
+    job_levels: Optional[List[str]] = Field(default_factory=list)
+    languages: Optional[List[str]] = Field(default_factory=list)
+    assessment_length: Optional[str] = None
