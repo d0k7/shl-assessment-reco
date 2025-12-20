@@ -1,104 +1,121 @@
 from __future__ import annotations
 
-import math
-import pickle
 import re
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Iterable, List, Sequence, Tuple
+
+from rank_bm25 import BM25Okapi  # lightweight, no torch
 
 
-_TOKEN_RE = re.compile(r"[a-z0-9]+")
+_TOKEN_RE = re.compile(r"[a-z0-9]+", re.IGNORECASE)
+
+# small, practical “skills” list to boost obvious intent
+_SKILL_HINTS = {
+    "java",
+    "python",
+    "sql",
+    "javascript",
+    "react",
+    "node",
+    "csharp",
+    "c#",
+    "dotnet",
+    ".net",
+    "aws",
+    "azure",
+    "gcp",
+    "kubernetes",
+    "docker",
+    "spring",
+    "hibernate",
+    "microservices",
+    "jira",
+    "salesforce",
+    "sap",
+    "informatica",
+    "etl",
+    "devops",
+}
 
 
-def _tokenize(text: str) -> List[str]:
-    text = (text or "").lower()
-    return _TOKEN_RE.findall(text)
+def tokenize(text: str) -> List[str]:
+    return [m.group(0).lower() for m in _TOKEN_RE.finditer(text or "")]
 
 
-@dataclass
-class BM25Index:
+@dataclass(frozen=True)
+class BM25Store:
     """
-    Minimal, stable BM25 implementation that is:
-    - pickleable (no lambdas / local classes)
-    - deterministic
-    - dependency-light (no rank_bm25 / sklearn)
+    Two-channel BM25:
+      - title/index on name (high weight)
+      - body/index on description + misc (lower weight)
     """
-    k1: float
-    b: float
-    docs_len: List[int]
-    avgdl: float
-    df: Dict[str, int]                # document frequency
-    idf: Dict[str, float]             # idf per term
-    tf: List[Dict[str, int]]          # per-document term frequency maps
+    bm25_title: BM25Okapi
+    bm25_body: BM25Okapi
+    title_tokens: List[List[str]]
+    body_tokens: List[List[str]]
 
-    @classmethod
-    def build(cls, texts: List[str], k1: float = 1.5, b: float = 0.75) -> "BM25Index":
-        tf: List[Dict[str, int]] = []
-        df: Dict[str, int] = {}
-        docs_len: List[int] = []
-
-        for t in texts:
-            terms = _tokenize(t)
-            docs_len.append(len(terms))
-
-            freq: Dict[str, int] = {}
-            for w in terms:
-                freq[w] = freq.get(w, 0) + 1
-            tf.append(freq)
-
-            for w in freq.keys():
-                df[w] = df.get(w, 0) + 1
-
-        n_docs = max(1, len(texts))
-        avgdl = sum(docs_len) / n_docs if n_docs else 0.0
-
-        idf: Dict[str, float] = {}
-        for w, f in df.items():
-            # classic BM25 idf
-            idf[w] = math.log(1.0 + (n_docs - f + 0.5) / (f + 0.5))
-
-        return cls(
-            k1=k1,
-            b=b,
-            docs_len=docs_len,
-            avgdl=avgdl,
-            df=df,
-            idf=idf,
-            tf=tf,
+    @staticmethod
+    def build(title_texts: Sequence[str], body_texts: Sequence[str]) -> "BM25Store":
+        title_tokens = [tokenize(t) for t in title_texts]
+        body_tokens = [tokenize(t) for t in body_texts]
+        return BM25Store(
+            bm25_title=BM25Okapi(title_tokens),
+            bm25_body=BM25Okapi(body_tokens),
+            title_tokens=title_tokens,
+            body_tokens=body_tokens,
         )
 
-    def scores(self, query: str) -> List[float]:
-        q_terms = _tokenize(query)
-        if not q_terms:
-            return [0.0] * len(self.tf)
+    def topk(
+        self,
+        query: str,
+        k: int,
+        *,
+        title_weight: float = 2.5,
+        body_weight: float = 1.0,
+        skill_boost: float = 1.5,
+        skill_boost_max: float = 3.0,
+        title_exact_boost: float = 2.0,
+        titles_raw: Sequence[str] | None = None,
+    ) -> List[Tuple[int, float]]:
+        """
+        Returns: list of (doc_index, score) sorted desc.
+        """
+        q_tokens = tokenize(query)
+        if not q_tokens:
+            return []
 
-        scores = [0.0] * len(self.tf)
-        for i, doc_tf in enumerate(self.tf):
-            dl = self.docs_len[i] if i < len(self.docs_len) else 0
-            denom_norm = (1.0 - self.b) + self.b * (dl / self.avgdl if self.avgdl > 0 else 0.0)
+        # BM25Okapi returns numpy arrays; treat as sequences
+        s_title = self.bm25_title.get_scores(q_tokens)
+        s_body = self.bm25_body.get_scores(q_tokens)
 
-            s = 0.0
-            for w in q_terms:
-                if w not in doc_tf:
-                    continue
-                f = doc_tf[w]
-                idf = self.idf.get(w, 0.0)
-                numer = f * (self.k1 + 1.0)
-                denom = f + self.k1 * denom_norm
-                s += idf * (numer / denom)
-            scores[i] = s
+        # combine
+        scores = (title_weight * s_title) + (body_weight * s_body)
 
-        return scores
+        # Skill boosting:
+        # If query contains "java", boost items whose title contains "java".
+        q_skills = {t for t in q_tokens if t in _SKILL_HINTS}
+        if q_skills and titles_raw is not None:
+            for i, title in enumerate(titles_raw):
+                tl = (title or "").lower()
+                matched = 0
+                for sk in q_skills:
+                    if sk in tl:
+                        matched += 1
+                if matched:
+                    # cap multiplicative boost
+                    mult = min(skill_boost_max, (skill_boost ** matched))
+                    scores[i] = scores[i] * mult
 
+        # Extra exact-title token boost (helps "Java 8", "Core Java", etc.)
+        if titles_raw is not None:
+            q_set = set(q_tokens)
+            for i, title in enumerate(titles_raw):
+                t_tokens = set(tokenize(title))
+                if t_tokens and (len(q_set & t_tokens) >= 2):
+                    scores[i] = scores[i] * title_exact_boost
 
-def save_bm25(index: BM25Index, path: str) -> None:
-    with open(path, "wb") as f:
-        pickle.dump(index, f, protocol=pickle.HIGHEST_PROTOCOL)
-
-
-def load_bm25(path: str) -> BM25Index:
-    with open(path, "rb") as f:
-        obj = pickle.load(f)
-    if not isinstance(obj, BM25Index):
-        raise TypeError(f"BM25 pickle is not a BM25Index. Got: {type(obj)}")
-    return obj
+        # top-k selection
+        # (avoid importing numpy explicitly; keep it simple)
+        scored = list(enumerate(scores))
+        scored.sort(key=lambda x: float(x[1]), reverse=True)
+        return [(idx, float(sc)) for idx, sc in scored[:k]]

@@ -1,13 +1,15 @@
-# Python
+# local / generated
+data/state.json
+data/state_seen_urls.json
+data/failed_urls.txt
+
+# keep predictions only if needed
+data/predictions.csv
+
+# optional: ignore indexes if you build on Render
+data/index/
+
+# python
+.venv/
 __pycache__/
 *.pyc
-.venv/
-.env
-
-# Index artifacts
-data/index/
-data/debug/
-
-# Generated outputs
-data/predictions.csv
-*.log

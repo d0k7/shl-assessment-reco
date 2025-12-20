@@ -1,0 +1,1726 @@
+{
+  "query": "Based on the JD below recommend me assessment for the Consultant position in my organizations. The assessment should not be more than 90 mins\nb Description\n\n Job Purpose \n\nResponsibilities\n\nThe Consultant role supports the broader professional services organization by leading the delivery of impactful client solutions and advising on client programs. Consultants are expected to deliver solutions, services, and insights that are driven by industry best practices and that positively impact client business objectives and partnerships. Individuals in this role provide I/O technical guidance to internal and external stakeholders, and drive continuous improvement related to project delivery.  Primary Duties and Responsibilities  Primary job duties and responsibilities include but may not be limited to:\n\n Planning, executing, and documenting projects related to clients’ talent assessment and development needs (e.g., job analysis, validation, leadership assessment, succession planning, program implementation, adverse impact analyses, best practices). \n Leading projects; ensuring overall quality for all client deliverables and guiding other to do the same. \n Serving as an expert resource to clients and internal stakeholders about issues related to talent assessment, selection, and development. \n Linking human capital insights to business outcomes and demonstrating ROI. \n Collaborating with members of the Sales team to manage existing programs and identify new business opportunities. \n Maintaining up-to-date knowledge of the field including empirical research, industry trends, and competitors. \n Providing talent analytics and data insights to technical and non-technical stakeholders. \n Contributing to the ongoing definition and development of SHL’s offerings and methodologies. \n Presenting to and interacting with senior client stakeholders. \n Providing thought leadership; working with delivery and commercial teams to drive improvements in the scoping and execution of projects/deliverables. \n\n Key Competencies: \n\n Decision Making \n Collaboration \n Building Relationships \n Creativity and Innovation \n Planning and Organizing \n Delivering Results \n Adaptability \n\n Qualifications include: \n\n A graduate degree in Industrial/Organizational psychology or a related discipline \n 2+ years of relevant work experience in applied talent assessment, talent management, or employee selection, including program design and implementation \n Client-facing delivery experience with design and implementation of talent assessment programs (including job analysis, criterion validation, content validation, and interviews) \n Selection system development and / or evaluation \n Proficient in at least one statistical program (e.g., SPSS, R) \n Strong communication skills and presenting technical results to non-technical stakeholders \n\n#IO #IndustrialPsychology #psychtalent #talentmanagement #talentassessment #psychometrics #consultant\n\nAbout Us\n\nWe unlock the possibilities of businesses through the power of people, science, and technology.\n\nWe started this industry of people insight more than 40 years ago and continue to lead the market with powerhouse product launches, ground-breaking science, and business transformation.\n\nWhen you inspire and transform people’s lives, you will experience the greatest business outcomes possible. SHL’s products insights, experiences, and services can help achieve growth at scale.\n\nMore at shl.com.\n\nWhat SHL Can Offer You\n\n An inclusive culture. \n A fun and flexible workplace where you’ll be inspired to do your best work. \n Employee benefits package that takes care of you and your family. \n Support, coaching, and on-the-job development to achieve career success. \n The ability to transform workplaces around the world for others. \n\nSHL is an equal opportunity employer.",
+  "k": 10,
+  "top_n": 150,
+  "recall": 0.0,
+  "truth_slugs": [
+    "administrative-professional-short-form",
+    "occupational-personality-questionnaire-opq32r",
+    "professional-7-1-solution",
+    "shl-verify-interactive-numerical-calculation",
+    "verify-verbal-ability-next-generation"
+  ],
+  "pred_slugs_topk": [
+    "retail-consultant-solution",
+    "senior-sales-professional-solution",
+    "sales-professional-solution",
+    "professionalindividual-contributor-short-form",
+    "sales-support-specialist-solution",
+    "sales-director-solution",
+    "customer-service-with-sales-short-form",
+    "software-business-analysis",
+    "sales-manager-solution",
+    "sales-supervisor-solution"
+  ],
+  "hits": [],
+  "missing_truth_in_catalog": [],
+  "truth_ranks_within_topN": {
+    "administrative-professional-short-form": 87,
+    "occupational-personality-questionnaire-opq32r": null,
+    "professional-7-1-solution": 148,
+    "shl-verify-interactive-numerical-calculation": null,
+    "verify-verbal-ability-next-generation": 111
+  },
+  "ranked_topN": [
+    {
+      "rank": 1,
+      "slug": "retail-consultant-solution",
+      "name": "Retail Consultant Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/retail-consultant-solution",
+      "score": 0.5997076630592346,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 2,
+      "slug": "senior-sales-professional-solution",
+      "name": "Senior Sales Professional Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/senior-sales-professional-solution",
+      "score": 0.5479046702384949,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 3,
+      "slug": "sales-professional-solution",
+      "name": "Sales Professional Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-solution",
+      "score": 0.5473350882530212,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 4,
+      "slug": "professionalindividual-contributor-short-form",
+      "name": "Professional/Individual Contributor - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professionalindividual-contributor-short-form",
+      "score": 0.5412980914115906,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 5,
+      "slug": "sales-support-specialist-solution",
+      "name": "Sales Support Specialist Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-support-specialist-solution",
+      "score": 0.5264725685119629,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 6,
+      "slug": "sales-director-solution",
+      "name": "Sales Director Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-director-solution",
+      "score": 0.5125033259391785,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 7,
+      "slug": "customer-service-with-sales-short-form",
+      "name": "Customer Service with Sales - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-with-sales-short-form",
+      "score": 0.5124994516372681,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 8,
+      "slug": "software-business-analysis",
+      "name": "Software Business Analysis",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/software-business-analysis",
+      "score": 0.5117655992507935,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 9,
+      "slug": "sales-manager-solution",
+      "name": "Sales Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-manager-solution",
+      "score": 0.5009185075759888,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 10,
+      "slug": "sales-supervisor-solution",
+      "name": "Sales Supervisor Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-supervisor-solution",
+      "score": 0.5002665519714355,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 11,
+      "slug": "director-short-form",
+      "name": "Director - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/director-short-form",
+      "score": 0.499142587184906,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 12,
+      "slug": "pjm-selection-report",
+      "name": "PJM Selection Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/pjm-selection-report",
+      "score": 0.4973236918449402,
+      "test_type": [
+        "A",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 13,
+      "slug": "sales-engineer-solution",
+      "name": "Sales Engineer Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-engineer-solution",
+      "score": 0.49286046624183655,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 14,
+      "slug": "sales-transformation-report-sales-manager",
+      "name": "Sales Transformation Report 1.0 - Sales Manager",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-transformation-report-sales-manager",
+      "score": 0.4917638301849365,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 15,
+      "slug": "project-manager-short-form",
+      "name": "Project Manager - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/project-manager-short-form",
+      "score": 0.49012941122055054,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 16,
+      "slug": "sales-transformation-report-2-0-sales-manager",
+      "name": "Sales Transformation Report 2.0 - Sales Manager",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-transformation-report-2-0-sales-manager",
+      "score": 0.4891076683998108,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 17,
+      "slug": "executive-scenarios-profile-report",
+      "name": "Executive Scenarios Profile Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/executive-scenarios-profile-report",
+      "score": 0.4889425039291382,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 18,
+      "slug": "executive-scenarios",
+      "name": "Executive Scenarios",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/executive-scenarios",
+      "score": 0.486375629901886,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 19,
+      "slug": "customer-service-short-form",
+      "name": "Customer Service - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-short-form",
+      "score": 0.4830166697502136,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 20,
+      "slug": "professional-7-0-solution-3958",
+      "name": "Professional + 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-0-solution-3958",
+      "score": 0.48097068071365356,
+      "test_type": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 21,
+      "slug": "customer-service-short-form-uk",
+      "name": "Customer Service - Short Form - UK",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-short-form-uk",
+      "score": 0.4800373911857605,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 22,
+      "slug": "graduate-scenarios-profile-report",
+      "name": "Graduate Scenarios Profile Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/graduate-scenarios-profile-report",
+      "score": 0.4787026345729828,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 23,
+      "slug": "sales-representative-solution",
+      "name": "Sales Representative Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-representative-solution",
+      "score": 0.478555828332901,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 24,
+      "slug": "contact-center-team-leadcoach-short-form",
+      "name": "Contact Center Team Lead/Coach - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-team-leadcoach-short-form",
+      "score": 0.4763537049293518,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 25,
+      "slug": "managerial-scenarios-profile-report",
+      "name": "Managerial Scenarios Profile Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/managerial-scenarios-profile-report",
+      "score": 0.47430676221847534,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 26,
+      "slug": "agency-manager-solution",
+      "name": "Agency Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/agency-manager-solution",
+      "score": 0.4738115072250366,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 27,
+      "slug": "executive-scenarios-narrative-report",
+      "name": "Executive Scenarios Narrative Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/executive-scenarios-narrative-report",
+      "score": 0.47358644008636475,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 28,
+      "slug": "sales-professional-7-1-%28americas%29",
+      "name": "Sales Professional 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-7-1-%28americas%29",
+      "score": 0.4734039604663849,
+      "test_type": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 29,
+      "slug": "branch-manager-short-form",
+      "name": "Branch Manager - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/branch-manager-short-form",
+      "score": 0.4714115560054779,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 30,
+      "slug": "managerial-scenarios-candidate-report",
+      "name": "Managerial Scenarios Candidate Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/managerial-scenarios-candidate-report",
+      "score": 0.46602821350097656,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 31,
+      "slug": "graduate-scenarios-narrative-report",
+      "name": "Graduate Scenarios Narrative Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/graduate-scenarios-narrative-report",
+      "score": 0.4658889174461365,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 32,
+      "slug": "supervisor-short-form",
+      "name": "Supervisor - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/supervisor-short-form",
+      "score": 0.46504563093185425,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 33,
+      "slug": "management-scenarios",
+      "name": "Management Scenarios",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/management-scenarios",
+      "score": 0.4634625315666199,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 34,
+      "slug": "account-manager-solution",
+      "name": "Account Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/account-manager-solution",
+      "score": 0.46261534094810486,
+      "test_type": [
+        "C",
+        "P",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "rank": 35,
+      "slug": "opq-ucf-development-action-planner-report-2-0",
+      "name": "OPQ UCF Development Action Planner Report 2.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-ucf-development-action-planner-report-2-0",
+      "score": 0.4605328440666199,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 36,
+      "slug": "sales-professional-7-0-solution",
+      "name": "Sales Professional 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-7-0-solution",
+      "score": 0.4603767395019531,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 37,
+      "slug": "professional-7-1-%28americas%29",
+      "name": "Professional + 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-1-%28americas%29",
+      "score": 0.46015432476997375,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 38,
+      "slug": "insurance-director-solution",
+      "name": "Insurance Director Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/insurance-director-solution",
+      "score": 0.4568291902542114,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 39,
+      "slug": "phone-banker-short-form",
+      "name": "Phone Banker - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/phone-banker-short-form",
+      "score": 0.45502370595932007,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 40,
+      "slug": "pjm-development-report",
+      "name": "PJM Development Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/pjm-development-report",
+      "score": 0.4549906849861145,
+      "test_type": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 41,
+      "slug": "contact-center-sales-and-service-8-0",
+      "name": "Contact Center Sales & Service + 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-sales-and-service-8-0",
+      "score": 0.4543362855911255,
+      "test_type": [
+        "P",
+        "B",
+        "C",
+        "A",
+        "S"
+      ]
+    },
+    {
+      "rank": 42,
+      "slug": "technical-sales-associate-solution",
+      "name": "Technical Sales Associate Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/technical-sales-associate-solution",
+      "score": 0.4541851282119751,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 43,
+      "slug": "personal-banker-short-form",
+      "name": "Personal Banker - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/personal-banker-short-form",
+      "score": 0.45350921154022217,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 44,
+      "slug": "graduate-7-1-job-focused-assessment",
+      "name": "Graduate 7.1 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/graduate-7-1-job-focused-assessment",
+      "score": 0.4528277814388275,
+      "test_type": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 45,
+      "slug": "managerial-scenarios-narrative-report",
+      "name": "Managerial Scenarios Narrative Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/managerial-scenarios-narrative-report",
+      "score": 0.4525974988937378,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 46,
+      "slug": "professional-7-0-solution",
+      "name": "Professional 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-0-solution",
+      "score": 0.4513891637325287,
+      "test_type": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 47,
+      "slug": "global-skills-development-report",
+      "name": "Global Skills Development Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/global-skills-development-report",
+      "score": 0.45113909244537354,
+      "test_type": [
+        "A",
+        "E",
+        "B",
+        "C",
+        "D",
+        "P"
+      ]
+    },
+    {
+      "rank": 48,
+      "slug": "project-management-2013",
+      "name": "Project Management (2013)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/project-management-2013",
+      "score": 0.45032864809036255,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 49,
+      "slug": "claimsoperations-supervisor-solution",
+      "name": "Claims/Operations Supervisor Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/claimsoperations-supervisor-solution",
+      "score": 0.45012205839157104,
+      "test_type": [
+        "P",
+        "S",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "rank": 50,
+      "slug": "bank-operations-supervisor-short-form",
+      "name": "Bank Operations Supervisor - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/bank-operations-supervisor-short-form",
+      "score": 0.44879215955734253,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 51,
+      "slug": "executive-short-form",
+      "name": "Executive - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/executive-short-form",
+      "score": 0.44857537746429443,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 52,
+      "slug": "manager-short-form",
+      "name": "Manager - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-short-form",
+      "score": 0.448189377784729,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 53,
+      "slug": "enterprise-leadership-report",
+      "name": "Enterprise Leadership Report 1.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/enterprise-leadership-report",
+      "score": 0.4476889669895172,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 54,
+      "slug": "sales-transformation-report-individual-contributor",
+      "name": "Sales Transformation 1.0 - Individual Contributor",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-transformation-report-individual-contributor",
+      "score": 0.445917546749115,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 55,
+      "slug": "enterprise-leadership-report-2-0",
+      "name": "Enterprise Leadership Report 2.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/enterprise-leadership-report-2-0",
+      "score": 0.4454137086868286,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 56,
+      "slug": "digital-readiness-development-report",
+      "name": "Digital Readiness Development Report - IC",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/digital-readiness-development-report",
+      "score": 0.44528114795684814,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 57,
+      "slug": "graduate-scenarios",
+      "name": "Graduate Scenarios",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/graduate-scenarios",
+      "score": 0.4449841380119324,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 58,
+      "slug": "insurance-sales-manager-solution",
+      "name": "Insurance Sales Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/insurance-sales-manager-solution",
+      "score": 0.44442659616470337,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 59,
+      "slug": "verify-interactive-process-monitoring",
+      "name": "Verify Interactive Process Monitoring",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-interactive-process-monitoring",
+      "score": 0.44385892152786255,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 60,
+      "slug": "salestransformationreport2-0-individualcontributor",
+      "name": "Sales Transformation 2.0 - Individual Contributor",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/salestransformationreport2-0-individualcontributor",
+      "score": 0.44359442591667175,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 61,
+      "slug": "professional-8-0-jfa",
+      "name": "Professional 8.0 JFA",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-8-0-jfa",
+      "score": 0.4434130787849426,
+      "test_type": [
+        "B",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 62,
+      "slug": "360-multi-rater-feedback-system-mfs",
+      "name": "360° Multi-Rater Feedback System (MFS)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/360-multi-rater-feedback-system-mfs",
+      "score": 0.443331778049469,
+      "test_type": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "rank": 63,
+      "slug": "manager-8-0-jfa-4310",
+      "name": "Manager 8.0+ JFA",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-8-0-jfa-4310",
+      "score": 0.44324588775634766,
+      "test_type": [
+        "B",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 64,
+      "slug": "bank-administrative-assistant-short-form",
+      "name": "Bank Administrative Assistant - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/bank-administrative-assistant-short-form",
+      "score": 0.4427100419998169,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 65,
+      "slug": "manager-7-0-solution-3955",
+      "name": "Manager + 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-7-0-solution-3955",
+      "score": 0.4420837461948395,
+      "test_type": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 66,
+      "slug": "professional-7-1-solution-4247",
+      "name": "Professional 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-1-solution-4247",
+      "score": 0.4411231279373169,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 67,
+      "slug": "retail-manager-w-sales-solution",
+      "name": "Retail Manager w/ Sales Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/retail-manager-w-sales-solution",
+      "score": 0.44041967391967773,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 68,
+      "slug": "bank-collections-agent-short-form",
+      "name": "Bank Collections Agent - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/bank-collections-agent-short-form",
+      "score": 0.4396953880786896,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 69,
+      "slug": "digital-readiness-development-report-manager",
+      "name": "Digital Readiness Development Report - Manager",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/digital-readiness-development-report-manager",
+      "score": 0.4385063648223877,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 70,
+      "slug": "service-associate-solution",
+      "name": "Service Associate Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/service-associate-solution",
+      "score": 0.4384692907333374,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 71,
+      "slug": "human-resources-new",
+      "name": "Human Resources (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/human-resources-new",
+      "score": 0.4374328851699829,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 72,
+      "slug": "insurance-administrative-assistant-solution",
+      "name": "Insurance Administrative Assistant Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/insurance-administrative-assistant-solution",
+      "score": 0.4363664388656616,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 73,
+      "slug": "retail-sales-associate-solution",
+      "name": "Retail Sales Associate Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/retail-sales-associate-solution",
+      "score": 0.43549978733062744,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 74,
+      "slug": "entry-level-sales-7-1-%28americas%29",
+      "name": "Entry level Sales 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-7-1-%28americas%29",
+      "score": 0.43545210361480713,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 75,
+      "slug": "service-supervisor-solution",
+      "name": "Service Supervisor Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/service-supervisor-solution",
+      "score": 0.4350404143333435,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 76,
+      "slug": "mechanical-and-vigilance-focus-8-0",
+      "name": "Manufac. & Indust. - Mechanical & Vigilance 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/mechanical-and-vigilance-focus-8-0",
+      "score": 0.43374285101890564,
+      "test_type": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 77,
+      "slug": "contact-center-manager-short-form",
+      "name": "Contact Center Manager - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-manager-short-form",
+      "score": 0.43327704071998596,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 78,
+      "slug": "districtregional-manager-solution",
+      "name": "District/Regional Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/districtregional-manager-solution",
+      "score": 0.4329602122306824,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 79,
+      "slug": "sql-server-analysis-services-%28ssas%29-%28new%29",
+      "name": "SQL Server Analysis Services (SSAS) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sql-server-analysis-services-%28ssas%29-%28new%29",
+      "score": 0.43185949325561523,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 80,
+      "slug": "financial-services-representative-solution",
+      "name": "Financial Services Representative Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/financial-services-representative-solution",
+      "score": 0.4307575225830078,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 81,
+      "slug": "restaurant-supervisor-solution",
+      "name": "Restaurant Supervisor Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/restaurant-supervisor-solution",
+      "score": 0.429945707321167,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 82,
+      "slug": "ms-powerpoint-new",
+      "name": "MS PowerPoint (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ms-powerpoint-new",
+      "score": 0.42897942662239075,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 83,
+      "slug": "server-solution",
+      "name": "Server Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/server-solution",
+      "score": 0.42897382378578186,
+      "test_type": [
+        "B",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 84,
+      "slug": "mq-candidate-motivation-report",
+      "name": "MQ Candidate Motivation Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/mq-candidate-motivation-report",
+      "score": 0.42885369062423706,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 85,
+      "slug": "technology-professional-8-0-job-focused-assessment",
+      "name": "Technology Professional 8.0 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/technology-professional-8-0-job-focused-assessment",
+      "score": 0.427725613117218,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 86,
+      "slug": "operations-management-new",
+      "name": "Operations Management (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/operations-management-new",
+      "score": 0.4274236559867859,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 87,
+      "slug": "administrative-professional-short-form",
+      "name": "Administrative Professional - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/administrative-professional-short-form",
+      "score": 0.42727458477020264,
+      "test_type": [
+        "A",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 88,
+      "slug": "remoteworkq-manager-report",
+      "name": "RemoteWorkQ Manager Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/remoteworkq-manager-report",
+      "score": 0.426576167345047,
+      "test_type": [
+        "C"
+      ]
+    },
+    {
+      "rank": 89,
+      "slug": "bookkeeping-accounting-auditing-clerk-short-form",
+      "name": "Bookkeeping, Accounting, Auditing Clerk Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/bookkeeping-accounting-auditing-clerk-short-form",
+      "score": 0.42600181698799133,
+      "test_type": [
+        "P",
+        "S",
+        "K",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "rank": 90,
+      "slug": "financial-professional-short-form",
+      "name": "Financial Professional - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/financial-professional-short-form",
+      "score": 0.4257845878601074,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 91,
+      "slug": "apprentice-8-0-job-focused-assessment-4261",
+      "name": "Apprentice + 8.0 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment-4261",
+      "score": 0.425690233707428,
+      "test_type": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 92,
+      "slug": "verify-deductive-reasoning",
+      "name": "Verify - Deductive Reasoning",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-deductive-reasoning",
+      "score": 0.4255846440792084,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 93,
+      "slug": "sales-profiler-cards",
+      "name": "Sales Profiler Cards",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-profiler-cards",
+      "score": 0.4254245162010193,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 94,
+      "slug": "entry-level-customer-service-general-solution",
+      "name": "Entry Level Customer Service (General) Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-general-solution",
+      "score": 0.42527973651885986,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 95,
+      "slug": "vigilance-focus-8-0",
+      "name": "Manufacturing & Industrial - Vigilance Focus 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/vigilance-focus-8-0",
+      "score": 0.4251333773136139,
+      "test_type": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 96,
+      "slug": "opq-team-impact-group-development-report",
+      "name": "OPQ Team Impact Group Development Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-team-impact-group-development-report",
+      "score": 0.4240349531173706,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 97,
+      "slug": "nurse-leader-solution",
+      "name": "Nurse Leader Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/nurse-leader-solution",
+      "score": 0.4239678978919983,
+      "test_type": [
+        "S",
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 98,
+      "slug": "manager-7-1-solution-4242",
+      "name": "Manager + 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-7-1-solution-4242",
+      "score": 0.4238576889038086,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 99,
+      "slug": "apprentice-8-0-job-focused-assessment",
+      "name": "Apprentice 8.0 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment",
+      "score": 0.4237135946750641,
+      "test_type": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 100,
+      "slug": "opq-maximising-your-learning-report",
+      "name": "OPQ Maximising your Learning Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-maximising-your-learning-report",
+      "score": 0.42168933153152466,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 101,
+      "slug": "opq-user-and-managers-report",
+      "name": "OPQ User and Managers Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-user-and-managers-report",
+      "score": 0.42124754190444946,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 102,
+      "slug": "data-warehousing-concepts",
+      "name": "Data Warehousing Concepts",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/data-warehousing-concepts",
+      "score": 0.42064225673675537,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 103,
+      "slug": "store-manager-solution",
+      "name": "Store Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/store-manager-solution",
+      "score": 0.4205683171749115,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 104,
+      "slug": "nurse-solution",
+      "name": "Nurse Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/nurse-solution",
+      "score": 0.4204126298427582,
+      "test_type": [
+        "P",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "rank": 105,
+      "slug": "accounts-receivable-new",
+      "name": "Accounts Receivable (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/accounts-receivable-new",
+      "score": 0.41920527815818787,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 106,
+      "slug": "workplace-administration-skills-new",
+      "name": "Workplace Administration Skills (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/workplace-administration-skills-new",
+      "score": 0.41894274950027466,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 107,
+      "slug": "agile-software-development",
+      "name": "Agile Software Development",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/agile-software-development",
+      "score": 0.4187694191932678,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 108,
+      "slug": "manufacturing-production-team-member",
+      "name": "Manufacturing Production Team Member",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manufacturing-production-team-member",
+      "score": 0.4185717701911926,
+      "test_type": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "rank": 109,
+      "slug": "opq-leadership-report",
+      "name": "OPQ Leadership Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-leadership-report",
+      "score": 0.4171539545059204,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 110,
+      "slug": "manager-8-0-jfa",
+      "name": "Manager 8.0 JFA",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-8-0-jfa",
+      "score": 0.41677501797676086,
+      "test_type": [
+        "B",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 111,
+      "slug": "verify-verbal-ability-next-generation",
+      "name": "Verify - Verbal Ability - Next Generation",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-verbal-ability-next-generation",
+      "score": 0.4166593849658966,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 112,
+      "slug": "opq-candidate-plus-report",
+      "name": "OPQ Candidate Plus Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-candidate-plus-report",
+      "score": 0.4165404438972473,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 113,
+      "slug": "hipo-assessment-report-2-0",
+      "name": "HiPo Assessment Report 2.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/hipo-assessment-report-2-0",
+      "score": 0.4146747589111328,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 114,
+      "slug": "dojo-new",
+      "name": "Dojo (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/dojo-new",
+      "score": 0.4146170914173126,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 115,
+      "slug": "entry-level-sales-solution",
+      "name": "Entry Level Sales Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-solution",
+      "score": 0.4142691195011139,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 116,
+      "slug": "essential-focus-8-0",
+      "name": "Manufacturing & Industrial - Essential Focus 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/essential-focus-8-0",
+      "score": 0.4142040014266968,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 117,
+      "slug": "remoteworkq-participant-report",
+      "name": "RemoteWorkQ Participant Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/remoteworkq-participant-report",
+      "score": 0.4140489995479584,
+      "test_type": [
+        "C"
+      ]
+    },
+    {
+      "rank": 118,
+      "slug": "support-associate-solution",
+      "name": "Support Associate Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/support-associate-solution",
+      "score": 0.4139401912689209,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 119,
+      "slug": "salesforce-development-new",
+      "name": "Salesforce Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/salesforce-development-new",
+      "score": 0.41392117738723755,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 120,
+      "slug": "sql-server-reporting-services-ssrs-new",
+      "name": "SQL Server Reporting Services (SSRS) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sql-server-reporting-services-ssrs-new",
+      "score": 0.41352275013923645,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 121,
+      "slug": "healthcare-service-associate-solution",
+      "name": "Healthcare Service Associate Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/healthcare-service-associate-solution",
+      "score": 0.4132632315158844,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 122,
+      "slug": "opq-premium-plus-report",
+      "name": "OPQ Premium Plus Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-premium-plus-report",
+      "score": 0.412966251373291,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 123,
+      "slug": "support-supervisor-solution",
+      "name": "Support Supervisor Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/support-supervisor-solution",
+      "score": 0.41235285997390747,
+      "test_type": [
+        "A",
+        "P",
+        "S",
+        "B"
+      ]
+    },
+    {
+      "rank": 124,
+      "slug": "opq-team-impact-individual-development-report",
+      "name": "OPQ Team Impact Individual Development Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-team-impact-individual-development-report",
+      "score": 0.41157859563827515,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 125,
+      "slug": "entry-level-customer-service-7-1-%28south-africa%29",
+      "name": "Entry Level Customer Service 7.1 (South Africa)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-7-1-%28south-africa%29",
+      "score": 0.41151291131973267,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 126,
+      "slug": "ibm-datastage-new",
+      "name": "IBM DataStage (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ibm-datastage-new",
+      "score": 0.4107273519039154,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 127,
+      "slug": "opq-premium-plus-report-2-0",
+      "name": "OPQ Premium Plus Report 2.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-premium-plus-report-2-0",
+      "score": 0.4096345901489258,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 128,
+      "slug": "contact-center-customer-service-8-0",
+      "name": "Contact Center Customer Service + 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-customer-service-8-0",
+      "score": 0.4094313979148865,
+      "test_type": [
+        "A",
+        "B",
+        "C",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 129,
+      "slug": "sap-basis-new",
+      "name": "SAP Basis (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-basis-new",
+      "score": 0.4092522859573364,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 130,
+      "slug": "sap-abap-intermediate-level-new",
+      "name": "SAP ABAP (Intermediate Level) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-abap-intermediate-level-new",
+      "score": 0.4092138409614563,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 131,
+      "slug": "java-web-services-new",
+      "name": "Java Web Services (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-web-services-new",
+      "score": 0.4091881513595581,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 132,
+      "slug": "opq-ucf-development-action-planner-report",
+      "name": "OPQ UCF Development Action Planner Report 1.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/opq-ucf-development-action-planner-report",
+      "score": 0.40868669748306274,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 133,
+      "slug": "teller-with-sales-short-form",
+      "name": "Teller with Sales - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/teller-with-sales-short-form",
+      "score": 0.40814274549484253,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 134,
+      "slug": "graduate-8-0-job-focused-assessment",
+      "name": "Graduate + 8.0 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/graduate-8-0-job-focused-assessment",
+      "score": 0.40796396136283875,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 135,
+      "slug": "general-entry-level-all-industries-7-0-solution",
+      "name": "General Entry Level - All Industries 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/general-entry-level-all-industries-7-0-solution",
+      "score": 0.4075784981250763,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 136,
+      "slug": "training-development",
+      "name": "Training Development",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/training-development",
+      "score": 0.40755653381347656,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 137,
+      "slug": "entry-level-customer-service-%28retail-and-cc%29-7-1",
+      "name": "Entry Level Customer Service 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-%28retail-and-cc%29-7-1",
+      "score": 0.4073205590248108,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 138,
+      "slug": "microsoft-dynamics-development-new",
+      "name": "Microsoft Dynamics Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/microsoft-dynamics-development-new",
+      "score": 0.40661680698394775,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 139,
+      "slug": "manager-7-1-%28international%29",
+      "name": "Manager + 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-7-1-%28international%29",
+      "score": 0.40621548891067505,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 140,
+      "slug": "sap-sd-sales-and-distribution-new",
+      "name": "SAP SD (Sales and Distribution) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-sd-sales-and-distribution-new",
+      "score": 0.4055258631706238,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 141,
+      "slug": "general-entry-level-all-industries-7-1%28americas%29",
+      "name": "General Entry Level - All Industries 7.1(Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/general-entry-level-all-industries-7-1%28americas%29",
+      "score": 0.40490055084228516,
+      "test_type": [
+        "B"
+      ]
+    },
+    {
+      "rank": 142,
+      "slug": "manufacturing-skilled-maintenance-worker",
+      "name": "Manufacturing Skilled Maintenance Worker",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manufacturing-skilled-maintenance-worker",
+      "score": 0.4047122299671173,
+      "test_type": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "rank": 143,
+      "slug": "contact-centre-agent-solution-uk",
+      "name": "Contact Centre Agent Solution - UK",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-centre-agent-solution-uk",
+      "score": 0.40454742312431335,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 144,
+      "slug": "healthcare-support-specialist-solution",
+      "name": "Healthcare Support Specialist Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/healthcare-support-specialist-solution",
+      "score": 0.40435516834259033,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 145,
+      "slug": "sales-interview-guide",
+      "name": "Sales Interview Guide",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-interview-guide",
+      "score": 0.4041554629802704,
+      "test_type": [
+        "P",
+        "P"
+      ]
+    },
+    {
+      "rank": 146,
+      "slug": "proof-operator-processing-specialist-short-form",
+      "name": "Proof Operator - Processing Specialist -Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/proof-operator-processing-specialist-short-form",
+      "score": 0.4041370153427124,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 147,
+      "slug": "store-manager-7-1-%28international%29",
+      "name": "Store Manager 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/store-manager-7-1-%28international%29",
+      "score": 0.4032082259654999,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 148,
+      "slug": "professional-7-1-solution",
+      "name": "Professional + 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-1-solution",
+      "score": 0.4026661217212677,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 149,
+      "slug": "event-sales-manager-solution",
+      "name": "Event Sales Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/event-sales-manager-solution",
+      "score": 0.4024457633495331,
+      "test_type": [
+        "S",
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 150,
+      "slug": "job-control-language-new",
+      "name": "Job Control Language (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/job-control-language-new",
+      "score": 0.4020960330963135,
+      "test_type": [
+        "K"
+      ]
+    }
+  ]
+}

@@ -1,109 +1,102 @@
 from __future__ import annotations
 
 import json
-import pickle
-import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List
 
-import numpy as np
-from rank_bm25 import BM25Okapi
+from app.index.bm25 import BM25Store
+from app.utils.url_canonical import canonicalize_url
 
-from app.schemas.catalog import CatalogItem
-from app.utils.url_normalize import canonicalize_url
-
-
-INDEX_DIR = Path("data/index")
-META_PATH = INDEX_DIR / "catalog_meta.jsonl"
-BM25_PATH = INDEX_DIR / "catalog_bm25.pkl"
+CATALOG_JSONL = Path("data/catalog.jsonl")
 
 
-_WORD_RE = re.compile(r"[A-Za-z0-9_]+")
-
-
-def _tokenize(text: str) -> List[str]:
-    text = (text or "").lower()
-    return _WORD_RE.findall(text)
-
-
-def item_to_text(it: CatalogItem) -> str:
-    parts: List[str] = []
-    if it.name:
-        parts.append(it.name)
-    if it.description:
-        parts.append(it.description)
-    if it.test_type:
-        parts.append(" ".join(it.test_type))
-    if it.job_levels:
-        parts.append(" ".join(it.job_levels))
-    return "\n".join(parts)
+@dataclass
+class CatalogDoc:
+    name: str
+    url: str
+    description: str
+    raw: Dict[str, Any]
 
 
 @dataclass
 class Artifacts:
-    bm25: BM25Okapi
-    tokens: List[List[str]]
-    items: List[CatalogItem]
+    docs: List[CatalogDoc]
+    bm25: BM25Store
 
 
-def save_bm25(bm25: BM25Okapi, tokens: List[List[str]], path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "wb") as f:
-        pickle.dump({"bm25": bm25, "tokens": tokens}, f)
+def _safe_str(x: Any) -> str:
+    return "" if x is None else str(x)
 
 
-def load_bm25(path: Path) -> Tuple[BM25Okapi, List[List[str]]]:
-    with open(path, "rb") as f:
-        obj = pickle.load(f)
-    return obj["bm25"], obj["tokens"]
+def _doc_title_text(d: CatalogDoc) -> str:
+    return d.name
 
 
-def load_metadata_jsonl(path: Path) -> List[CatalogItem]:
-    items: List[CatalogItem] = []
-    with open(path, "r", encoding="utf-8") as f:
+def _doc_body_text(d: CatalogDoc) -> str:
+    raw = d.raw
+    parts: List[str] = []
+    parts.append(d.description)
+
+    # Optional structured fields (only if present in JSONL)
+    for key in ("test_type", "job_levels", "languages", "assessment_length", "remote_testing"):
+        v = raw.get(key)
+        if isinstance(v, list):
+            parts.append(" ".join(map(_safe_str, v)))
+        elif isinstance(v, str):
+            parts.append(v)
+
+    return "\n".join([p for p in parts if p]).strip()
+
+
+def load_catalog_jsonl(path: Path = CATALOG_JSONL) -> List[CatalogDoc]:
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Missing {path}. Commit data/catalog.jsonl to the repo for Render BM25 mode."
+        )
+
+    docs: List[CatalogDoc] = []
+    with path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             obj = json.loads(line)
-            obj["url"] = canonicalize_url(str(obj.get("url", "")))
-            items.append(CatalogItem(**obj))
-    return items
+
+            name = _safe_str(obj.get("name"))
+            url = canonicalize_url(_safe_str(obj.get("url")))
+            desc = _safe_str(obj.get("description"))
+
+            docs.append(CatalogDoc(name=name, url=url, description=desc, raw=obj))
+
+    if not docs:
+        raise RuntimeError(f"{path} loaded but contains 0 items.")
+
+    return docs
 
 
 def load_artifacts() -> Artifacts:
-    if not META_PATH.exists():
-        raise FileNotFoundError(f"Missing metadata: {META_PATH}")
-    if not BM25_PATH.exists():
-        raise FileNotFoundError(f"Missing BM25 index: {BM25_PATH}")
-
-    items = load_metadata_jsonl(META_PATH)
-    bm25, tokens = load_bm25(BM25_PATH)
-    return Artifacts(bm25=bm25, tokens=tokens, items=items)
+    docs = load_catalog_jsonl()
+    titles = [_doc_title_text(d) for d in docs]
+    bodies = [_doc_body_text(d) for d in docs]
+    bm25 = BM25Store.build(titles, bodies)
+    return Artifacts(docs=docs, bm25=bm25)
 
 
-def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict]:
-    q_tokens = _tokenize(query)
-    if not q_tokens:
-        return []
+def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict[str, Any]]:
+    top_k = max(1, min(int(top_k), 25))
 
-    scores = artifacts.bm25.get_scores(q_tokens)
-    scores = np.asarray(scores, dtype=np.float32)
+    titles_raw = [d.name for d in artifacts.docs]
+    hits = artifacts.bm25.topk(query, top_k, titles_raw=titles_raw)
 
-    top_k = max(1, int(top_k))
-    idxs = np.argsort(-scores)[:top_k]
+    out: List[Dict[str, Any]] = []
+    for idx, score in hits:
+        d = artifacts.docs[idx]
+        rec = dict(d.raw)
+        rec["name"] = d.name
+        rec["url"] = d.url
+        rec["description"] = d.description
+        rec["score"] = score
+        out.append(rec)
 
-    out: List[Dict] = []
-    for i in idxs:
-        it = artifacts.items[int(i)]
-        out.append(
-            {
-                "name": it.name,
-                "url": it.url,
-                "description": it.description or "",
-                "test_type": it.test_type or [],
-                "score": float(scores[int(i)]),
-            }
-        )
     return out

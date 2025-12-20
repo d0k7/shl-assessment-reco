@@ -1,0 +1,199 @@
+query,recall,truth_slugs,pred_slugs_topk,hits,missing_truth_in_catalog,truth_ranks_within_topN,per_query_json
+I am hiring for Java developers who can also collaborate effectively with my business teams. Looking for an assessment(s) that can be completed in 40 minutes.,0.6000,automata-fix-new | core-java-advanced-level-new | core-java-entry-level-new | interpersonal-communications | java-8-new,java-8-new | java-web-services-new | software-business-analysis | java-frameworks-new | java-2-platform-enterprise-edition-1-4-fundamental | core-java-entry-level-new | core-java-advanced-level-new | enterprise-java-beans-new | java-design-patterns-new | java-platform-enterprise-edition-7-java-ee-7,java-8-new | core-java-entry-level-new | core-java-advanced-level-new,,"{""automata-fix-new"": null, ""core-java-advanced-level-new"": 7, ""core-java-entry-level-new"": 6, ""interpersonal-communications"": null, ""java-8-new"": 1}",data/debug/query_9064480976.json
+"I want to hire new graduates for a sales role in my company, the budget is for about an hour for each test. Give me some options",0.1111,business-communication-adaptive | english-comprehension-new | entry-level-sales-7-1 | entry-level-sales-sift-out-7-1 | entry-level-sales-solution | interpersonal-communications | sales-representative-solution | svar-spoken-english-indian-accent-new | technical-sales-associate-solution,sales-professional-solution | senior-sales-professional-solution | sales-representative-solution | sales-director-solution | sales-professional-7-1-%28americas%29 | sales-professional-7-0-solution | retail-sales-associate-solution | sales-supervisor-solution | retail-consultant-solution | retail-manager-w-sales-solution,sales-representative-solution,,"{""business-communication-adaptive"": null, ""english-comprehension-new"": null, ""entry-level-sales-7-1"": 45, ""entry-level-sales-sift-out-7-1"": 116, ""entry-level-sales-solution"": 14, ""interpersonal-communications"": null, ""sales-representative-solution"": 3, ""svar-spoken-english-indian-accent-new"": null, ""technical-sales-associate-solution"": 12}",data/debug/query_4752005256.json
+I am looking for a COO for my company in China and I want to see if they are culturally a right fit for our company. Suggest me an assessment that they can complete in about an hour,0.0000,enterprise-leadership-report | enterprise-leadership-report-2-0 | global-skills-assessment | occupational-personality-questionnaire-opq32r | opq-leadership-report | opq-team-types-and-leadership-styles-report,cobol-programming-new | contact-center-customer-service-8-0 | industrial-professional-and-skilled-7-1-%28americas%29 | store-manager-7-1-%28americas%29 | entry-level-customer-serv-retail-and-contact-center | store-manager-7-1-%28international%29 | graduate-8-0-job-focused-assessment-4228 | professional-7-1-solution | entry-level-hotel-front-desk-solution | industrial-professional-and-skilled-7-0-solution,,,"{""enterprise-leadership-report"": null, ""enterprise-leadership-report-2-0"": null, ""global-skills-assessment"": 29, ""occupational-personality-questionnaire-opq32r"": null, ""opq-leadership-report"": null, ""opq-team-types-and-leadership-styles-report"": 46}",data/debug/query_6229135381.json
+"KEY RESPONSIBITILES:
+
+Manage the sound-scape of the station through appropriate creative and marketing interventions to Increase or Maintain the listenership
+Acts as an interface between Programming & sales team, thereby supporting the sales team by providing creative inputs in order to increase the overall ad spends by clients
+Build brand Mirchi by ideating fresh programming initiatives on air campaigns, programming led on-ground events & new properties to ensure brand differentiation & thus increase brand recall at station level
+Invest time in local RJs to grow & develop them as local celebrities
+Through strong networking, must focus on identifying the best of local talent and ensure to bring the creative minds from the market on board with Mirchi
+Build radio as a category for both listeners & advertisers
+People Management
+Identifying the right talent and investing time in developing them by frequent feedback on their performance
+Monitor, Coach and mentor team members on a regular basis
+Development of Jocks as per guidelines
+Must have an eye to spot the local talent to fill up vacancies locally
+
+
+
+
+TECHNICAL SKILLS & QUALIFICATION REQUIRED:
+
+Graduation / Post Graduation (Any specialisation) with 8 -12 years of relevant experience
+Experience in digital content conceptualisation
+Strong branding focus
+Must be well-read in variety of areas and must keep up with the latest events in the city / cluster / country
+Must know to read, write & speak English 
+
+
+PERSONAL ATTRIBUTES:
+
+Excellent communication skills
+Good interpersonal skills
+People management
+
+
+Suggest me some tests for the above jd. The duration should be at most 90 mins",0.4000,english-comprehension-new | interpersonal-communications | marketing-new | shl-verify-interactive-inductive-reasoning | verify-verbal-ability-next-generation,marketing-new | digital-advertising-new | following-instructions-v1-uk-r1 | production-and-industrial-engineering-new | entry-level-sales-solution | interpersonal-communications | entry-level-sales-7-1-%28americas%29 | following-instructions-v1-us-r2 | production-engineering-new | electronics-and-telecommunications-engineering-new,marketing-new | interpersonal-communications,,"{""english-comprehension-new"": null, ""interpersonal-communications"": 6, ""marketing-new"": 1, ""shl-verify-interactive-inductive-reasoning"": 117, ""verify-verbal-ability-next-generation"": 138}",data/debug/query_1854759964.json
+"Content Writer required, expert in English and SEO.",0.4000,drupal-new | english-comprehension-new | occupational-personality-questionnaire-opq32r | search-engine-optimization-new | written-english-v1,written-english-v1 | search-engine-optimization-new | writex-email-writing-managerial-new | writex-email-writing-sales-new | writex-email-writing-customer-service-new | professionalindividual-contributor-short-form | director-short-form | professional-7-0-solution-3958 | server-solution | proof-operator-processing-specialist-short-form,written-english-v1 | search-engine-optimization-new,,"{""drupal-new"": null, ""english-comprehension-new"": 37, ""occupational-personality-questionnaire-opq32r"": null, ""search-engine-optimization-new"": 2, ""written-english-v1"": 1}",data/debug/query_9600882962.json
+"Find me 1 hour long assesment for the below job at SHL
+Job Description
+
+ Join a community that is shaping the future of work! SHL, People Science. People Answers. 
+
+Are you a seasoned QA Engineer with a flair for innovation? Are you ready to shape the future of talent assessment and empower organizations to unlock their full potential? If so, we want you to be a part of the SHL Team! As a QA Engineer, you will be involved in creating and implementing software solutions that contribute to the development of our ground-breaking products.
+
+An excellent benefit package is offered in a culture where career development, with ongoing manager guidance, collaboration, flexibility, diversity, and inclusivity are all intrinsic to our culture.  There is a huge investment in SHL currently so there’s no better time to become a part of something transformational.
+
+What You Will Be Doing
+
+ Getting involved in engineering quality assurance and providing inputs when required. 
+ Create and develop test plans for various forms of testing. 
+ Conducts and/or participates in formal and informal test case reviews. 
+ Develop and initiate functional tests and regression tests. 
+ Rolling out improvements for testing and quality processes. 
+
+Essential
+
+ What we are looking for from you: 
+
+ Development experience – Java or JavaScript, CSS, HTML (Automation) 
+ Selenium WebDriver and page object design pattern (Automation) 
+ SQL server knowledge 
+ Test case management experience. 
+ Manual Testing 
+
+Desirable
+
+ Knowledge the basic concepts of testing 
+ Strong solution-finding experience 
+ Strong verbal and written communicator. 
+
+Get In Touch
+
+Find out how this one-off opportunity can help you achieve your career goals by making an application to our knowledgeable and friendly Talent Acquisition team. Choose a new path with SHL.
+
+ #CareersAtSHL #SHLHiringTalent 
+
+#TechnologyJobs #QualityAssuranceJobs
+
+#CareerOpportunities #JobOpportunities 
+
+About Us
+
+We unlock the possibilities of businesses through the power of people, science and technology.
+We started this industry of people insight more than 40 years ago and continue to lead the market with powerhouse product launches, ground-breaking science and business transformation.
+When you inspire and transform people’s lives, you will experience the greatest business outcomes possible. SHL’s products insights, experiences, and services can help achieve growth at scale.
+
+What SHL Can Offer You
+
+Diversity, equity, inclusion and accessibility are key threads in the fabric of SHL’s business and culture (find out more about DEI and accessibility at SHL )
+Employee benefits package that takes care of you and your family.
+Support, coaching, and on-the-job development to achieve career success
+A fun and flexible workplace where you’ll be inspired to do your best work (find out more LifeAtSHL )
+The ability to transform workplaces around the world for others.
+
+SHL is an equal opportunity employer. We support and encourage applications from a diverse range of candidates. We can, and do make adjustments to make sure our recruitment process is as inclusive as possible.
+
+SHL is an equal opportunity employer.",0.0000,automata-selenium | automata-sql-new | css3-new | htmlcss-new | javascript-new | manual-testing-new | professional-7-1-solution | selenium-new | sql-server-new,professional-7-0-solution-3958 | technology-professional-8-0-job-focused-assessment | verify-interactive-process-monitoring | assessment-and-development-center-exercises | universal-competency-framework-job-profiling-guide | shl-verify-interactive-inductive-reasoning | professional-7-1-%28americas%29 | shl-verify-interactive-deductive-reasoning | 360-digital-report | shl-verify-interactive-numerical-calculation,,,"{""automata-selenium"": 31, ""automata-sql-new"": 139, ""css3-new"": 114, ""htmlcss-new"": 36, ""javascript-new"": 95, ""manual-testing-new"": null, ""professional-7-1-solution"": 100, ""selenium-new"": 21, ""sql-server-new"": null}",data/debug/query_6867769647.json
+"ICICI Bank Assistant Admin, Experience required 0-2 years, test should be 30-40 mins long",0.3333,administrative-professional-short-form | bank-administrative-assistant-short-form | basic-computer-literacy-windows-10-new | financial-professional-short-form | general-entry-level-data-entry-7-0-solution | verify-numerical-ability,personal-banker-short-form | bank-administrative-assistant-short-form | financial-and-banking-services-new | phone-banker-short-form | financial-accounting-new | accounts-payable-simulation-new | financial-professional-short-form | teller-with-sales-short-form | accounts-payable-new | accounts-receivable-new,bank-administrative-assistant-short-form | financial-professional-short-form,,"{""administrative-professional-short-form"": 29, ""bank-administrative-assistant-short-form"": 2, ""basic-computer-literacy-windows-10-new"": null, ""financial-professional-short-form"": 7, ""general-entry-level-data-entry-7-0-solution"": 93, ""verify-numerical-ability"": 126}",data/debug/query_4722366336.json
+"We're looking for a Marketing Manager who can drive Recro’s brand positioning, community growth, and overall marketing strategy to fuel business growth. The ideal candidate is a strategic thinker, an execution-focused leader, and an expert in building high-performing marketing teams.
+
+
+
+About Recro 
+
+
+Recro is a developer-focused platform that was founded to match individual expertise with the right opportunities seamlessly. We empower talented developers by providing them with relevant experience at fast-growing startups based on technical competencies and aspirations. These opportunities have a significant impact on their career success and help them become their best self.
+
+
+About The Role
+
+Develop and execute Recro’s marketing strategy to enhance community engagement, brand positioning, and industry presence.
+Lead the marketing team and oversee all functions, with a strong focus on community building, events, brand positioning, social media engagement, and market intelligence.
+Drive demand generation by leveraging community-driven initiatives, influencer partnerships, and strategic event participation.
+Organize and represent Recro at industry conferences, networking events, and developer meetups to strengthen brand positioning.
+Build and nurture relationships with industry influencers, developer communities, and partners to create brand advocates.
+Own the marketing funnel, ensuring continuous tracking, analysis, and optimization of community engagement and event performance.
+Collaborate with sales, business development, and leadership teams to align marketing strategies with business objectives and market trends.
+Manage marketing budgets, prioritizing event sponsorships, partnerships, and community-driven growth initiatives.
+Develop compelling content strategies to drive community interaction and thought leadership.
+Stay ahead of industry trends, competitor movements, and emerging social and market intelligence to maintain a competitive edge
+
+
+Requirements
+
+5+ years of experience in B2B marketing with a strong focus on community building, events, and brand positioning.
+Has a deep understanding how demand generation works from traditional and new age channels
+Proven track record of executing large-scale events and community-driven initiatives.
+Experience in developing partnerships with industry influencers and thought leaders.
+Strong understanding of social media dynamics and community engagement strategies.
+Ability to leverage market intelligence and competitor insights to refine marketing strategies.
+Exceptional storytelling and brand communication skills.
+Hands-on experience with event management, sponsorships, and partnership collaborations.
+Experience in building a thriving developer or tech community is a plus.
+Open for flexible work timings as per target geographies.
+
+I have no bar on duration.",0.0000,digital-advertising-new | manager-8-0-jfa-4310 | microsoft-excel-365-essentials-new | shl-verify-interactive-inductive-reasoning | writex-email-writing-sales-new,marketing-new | sales-professional-solution | retail-consultant-solution | sales-transformation-report-individual-contributor | salestransformationreport2-0-individualcontributor | sales-transformation-report-sales-manager | sales-transformation-report-2-0-sales-manager | sales-representative-solution | sales-professional-7-0-solution | entry-level-sales-7-1-%28americas%29,,,"{""digital-advertising-new"": 18, ""manager-8-0-jfa-4310"": 47, ""microsoft-excel-365-essentials-new"": null, ""shl-verify-interactive-inductive-reasoning"": null, ""writex-email-writing-sales-new"": null}",data/debug/query_7881111765.json
+"Based on the JD below recommend me assessment for the Consultant position in my organizations. The assessment should not be more than 90 mins
+b Description
+
+ Job Purpose 
+
+Responsibilities
+
+The Consultant role supports the broader professional services organization by leading the delivery of impactful client solutions and advising on client programs. Consultants are expected to deliver solutions, services, and insights that are driven by industry best practices and that positively impact client business objectives and partnerships. Individuals in this role provide I/O technical guidance to internal and external stakeholders, and drive continuous improvement related to project delivery.  Primary Duties and Responsibilities  Primary job duties and responsibilities include but may not be limited to:
+
+ Planning, executing, and documenting projects related to clients’ talent assessment and development needs (e.g., job analysis, validation, leadership assessment, succession planning, program implementation, adverse impact analyses, best practices). 
+ Leading projects; ensuring overall quality for all client deliverables and guiding other to do the same. 
+ Serving as an expert resource to clients and internal stakeholders about issues related to talent assessment, selection, and development. 
+ Linking human capital insights to business outcomes and demonstrating ROI. 
+ Collaborating with members of the Sales team to manage existing programs and identify new business opportunities. 
+ Maintaining up-to-date knowledge of the field including empirical research, industry trends, and competitors. 
+ Providing talent analytics and data insights to technical and non-technical stakeholders. 
+ Contributing to the ongoing definition and development of SHL’s offerings and methodologies. 
+ Presenting to and interacting with senior client stakeholders. 
+ Providing thought leadership; working with delivery and commercial teams to drive improvements in the scoping and execution of projects/deliverables. 
+
+ Key Competencies: 
+
+ Decision Making 
+ Collaboration 
+ Building Relationships 
+ Creativity and Innovation 
+ Planning and Organizing 
+ Delivering Results 
+ Adaptability 
+
+ Qualifications include: 
+
+ A graduate degree in Industrial/Organizational psychology or a related discipline 
+ 2+ years of relevant work experience in applied talent assessment, talent management, or employee selection, including program design and implementation 
+ Client-facing delivery experience with design and implementation of talent assessment programs (including job analysis, criterion validation, content validation, and interviews) 
+ Selection system development and / or evaluation 
+ Proficient in at least one statistical program (e.g., SPSS, R) 
+ Strong communication skills and presenting technical results to non-technical stakeholders 
+
+#IO #IndustrialPsychology #psychtalent #talentmanagement #talentassessment #psychometrics #consultant
+
+About Us
+
+We unlock the possibilities of businesses through the power of people, science, and technology.
+
+We started this industry of people insight more than 40 years ago and continue to lead the market with powerhouse product launches, ground-breaking science, and business transformation.
+
+When you inspire and transform people’s lives, you will experience the greatest business outcomes possible. SHL’s products insights, experiences, and services can help achieve growth at scale.
+
+More at shl.com.
+
+What SHL Can Offer You
+
+ An inclusive culture. 
+ A fun and flexible workplace where you’ll be inspired to do your best work. 
+ Employee benefits package that takes care of you and your family. 
+ Support, coaching, and on-the-job development to achieve career success. 
+ The ability to transform workplaces around the world for others. 
+
+SHL is an equal opportunity employer.",0.0000,administrative-professional-short-form | occupational-personality-questionnaire-opq32r | professional-7-1-solution | shl-verify-interactive-numerical-calculation | verify-verbal-ability-next-generation,retail-consultant-solution | senior-sales-professional-solution | sales-professional-solution | professionalindividual-contributor-short-form | sales-support-specialist-solution | sales-director-solution | customer-service-with-sales-short-form | software-business-analysis | sales-manager-solution | sales-supervisor-solution,,,"{""administrative-professional-short-form"": 87, ""occupational-personality-questionnaire-opq32r"": null, ""professional-7-1-solution"": 148, ""shl-verify-interactive-numerical-calculation"": null, ""verify-verbal-ability-next-generation"": 111}",data/debug/query_8263320988.json
+"I want to hire a Senior Data Analyst with 5 years of experience and expertise in SQL, Excel and Python. The assessment can be 1-2 hour long",0.4000,automata-sql-new | data-warehousing-concepts | microsoft-excel-365-essentials-new | microsoft-excel-365-new | professional-7-0-solution-3958 | professional-7-1-solution | python-new | sql-server-analysis-services-%28ssas%29-%28new%29 | sql-server-new | tableau-new,senior-sales-professional-solution | sql-server-analysis-services-%28ssas%29-%28new%29 | ms-excel-new | data-warehousing-concepts | professionalindividual-contributor-short-form | software-business-analysis | professional-7-0-solution-3958 | sql-server-new | general-entry-level-data-entry-7-0-solution | professional-7-1-%28americas%29,sql-server-analysis-services-%28ssas%29-%28new%29 | data-warehousing-concepts | professional-7-0-solution-3958 | sql-server-new,,"{""automata-sql-new"": 59, ""data-warehousing-concepts"": 4, ""microsoft-excel-365-essentials-new"": 88, ""microsoft-excel-365-new"": 58, ""professional-7-0-solution-3958"": 7, ""professional-7-1-solution"": 25, ""python-new"": 38, ""sql-server-analysis-services-%28ssas%29-%28new%29"": 2, ""sql-server-new"": 8, ""tableau-new"": 56}",data/debug/query_4868732798.json
