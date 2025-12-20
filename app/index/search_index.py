@@ -1,56 +1,107 @@
-import faiss
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
+from typing import Any, List, Optional, Tuple
+
+import faiss  # type: ignore
 import numpy as np
 from sentence_transformers import SentenceTransformer
-import json
+
 from app.schemas.catalog import CatalogItem
-from typing import List
+from app.schemas.api import RecommendedAssessment
+from app.utils.text import looks_like_url, fetch_url_text
 
-# Load the pre-trained model (same as used for indexing)
-model = SentenceTransformer('all-MiniLM-L6-v2')
+ROOT_DIR = Path(__file__).resolve().parents[2]   # C:\...\shl-reco\shl-reco
+DATA_DIR = ROOT_DIR / "data"
+INDEX_DIR = DATA_DIR / "index"
 
-def load_index(index_path: str):
-    """Loads the FAISS index from the specified path."""
-    return faiss.read_index(index_path)
+DEFAULT_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+DEFAULT_FAISS_PATH = INDEX_DIR / "catalog.faiss"
+DEFAULT_META_PATH = INDEX_DIR / "catalog_meta.jsonl"
 
-def load_metadata(metadata_path: str) -> List[CatalogItem]:
-    """Loads the metadata (item details) from the JSON file."""
-    with open(metadata_path, "r", encoding="utf-8") as f:
-        return [CatalogItem(**item_data) for item_data in json.load(f)]
 
-def recommend(query: str, index, metadata: List[CatalogItem], top_k: int = 10):
-    """Find the most similar items based on the query."""
-    embedding = model.encode([query])[0]  # Get the embedding for the query
-    distances, indices = index.search(np.array([embedding]), top_k)
+def load_metadata_jsonl(path: Path) -> List[CatalogItem]:
+    items: List[CatalogItem] = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            items.append(CatalogItem(**json.loads(line)))
+    return items
 
-    results = []
-    for i, idx in enumerate(indices[0]):
-        if idx == -1:
-            continue  # Skip invalid results
-        item = metadata[idx]
-        results.append({
-            'rank': i + 1,
-            'item_url': item.url,
-            'name': item.name,
-            'description': item.description,
-            'distance': float(distances[0][i])
-        })
-    return results
 
-def main():
-    index_path = "data/index/catalog_index.faiss"
-    metadata_path = "data/index/metadata.json"
+def load_faiss_index(path: Path) -> faiss.Index:
+    if not path.exists():
+        raise FileNotFoundError(f"FAISS index not found: {path}")
+    return faiss.read_index(str(path))
 
-    query = input("Enter your query: ")
 
-    print("Loading FAISS index and metadata...")
-    index = load_index(index_path)
-    metadata = load_metadata(metadata_path)
+def encode_query(model: SentenceTransformer, text: str) -> np.ndarray:
+    vec = model.encode([text], convert_to_numpy=True, normalize_embeddings=True)
+    return vec.astype(np.float32, copy=False)
 
-    print("Generating recommendations...")
-    recommendations = recommend(query, index, metadata)
 
-    for rec in recommendations:
-        print(f"Rank {rec['rank']}: {rec['name']} - {rec['description']} (Distance: {rec['distance']})")
+@dataclass(frozen=True)
+class Artifacts:
+    model: SentenceTransformer
+    index: faiss.Index
+    items: List[CatalogItem]
 
-if __name__ == "__main__":
-    main()
+
+@lru_cache(maxsize=1)
+def load_artifacts(
+    model_name: str = DEFAULT_MODEL_NAME,
+    faiss_path: Path = DEFAULT_FAISS_PATH,
+    meta_path: Path = DEFAULT_META_PATH,
+) -> Artifacts:
+    model = SentenceTransformer(model_name)
+    index = load_faiss_index(faiss_path)
+    items = load_metadata_jsonl(meta_path)
+    return Artifacts(model=model, index=index, items=items)
+
+
+def dense_recommend(query_text: str, artifacts: Artifacts, top_k: int) -> List[Tuple[int, float]]:
+    q = encode_query(artifacts.model, query_text)
+    scores, idxs = artifacts.index.search(q, top_k)
+
+    out: List[Tuple[int, float]] = []
+    for score, idx in zip(scores[0].tolist(), idxs[0].tolist()):
+        if idx < 0 or idx >= len(artifacts.items):
+            continue
+        out.append((idx, float(score)))
+    return out
+
+
+def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[RecommendedAssessment]:
+    q = query.strip()
+
+    if looks_like_url(q):
+        try:
+            fetched = fetch_url_text(q)
+            q_text = f"Job Description from URL:\n{fetched}"
+        except Exception:
+            q_text = q
+    else:
+        q_text = q
+
+    hits = dense_recommend(q_text, artifacts, top_k=top_k)
+
+    recs: List[RecommendedAssessment] = []
+    for idx, _score in hits:
+        it = artifacts.items[idx]
+        recs.append(
+            RecommendedAssessment(
+                name=it.name,
+                url=it.url,
+                description=getattr(it, "description", "") or "",
+                duration=int(getattr(it, "duration", 0) or 0),
+                remote_support=str(getattr(it, "remote_support", "No") or "No"),
+                adaptive_support=str(getattr(it, "adaptive_support", "No") or "No"),
+                test_type=list(getattr(it, "test_type", []) or []),
+            )
+        )
+    return recs

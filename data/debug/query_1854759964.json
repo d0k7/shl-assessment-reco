@@ -1,0 +1,1638 @@
+{
+  "query": "KEY RESPONSIBITILES:\n\nManage the sound-scape of the station through appropriate creative and marketing interventions to Increase or Maintain the listenership\nActs as an interface between Programming & sales team, thereby supporting the sales team by providing creative inputs in order to increase the overall ad spends by clients\nBuild brand Mirchi by ideating fresh programming initiatives on air campaigns, programming led on-ground events & new properties to ensure brand differentiation & thus increase brand recall at station level\nInvest time in local RJs to grow & develop them as local celebrities\nThrough strong networking, must focus on identifying the best of local talent and ensure to bring the creative minds from the market on board with Mirchi\nBuild radio as a category for both listeners & advertisers\nPeople Management\nIdentifying the right talent and investing time in developing them by frequent feedback on their performance\nMonitor, Coach and mentor team members on a regular basis\nDevelopment of Jocks as per guidelines\nMust have an eye to spot the local talent to fill up vacancies locally\n\n\n\n\nTECHNICAL SKILLS & QUALIFICATION REQUIRED:\n\nGraduation / Post Graduation (Any specialisation) with 8 -12 years of relevant experience\nExperience in digital content conceptualisation\nStrong branding focus\nMust be well-read in variety of areas and must keep up with the latest events in the city / cluster / country\nMust know to read, write & speak English \n\n\nPERSONAL ATTRIBUTES:\n\nExcellent communication skills\nGood interpersonal skills\nPeople management\n\n\nSuggest me some tests for the above jd. The duration should be at most 90 mins",
+  "k": 10,
+  "top_n": 150,
+  "recall": 0.4,
+  "truth_slugs": [
+    "english-comprehension-new",
+    "interpersonal-communications",
+    "marketing-new",
+    "shl-verify-interactive-inductive-reasoning",
+    "verify-verbal-ability-next-generation"
+  ],
+  "pred_slugs_topk": [
+    "marketing-new",
+    "digital-advertising-new",
+    "following-instructions-v1-uk-r1",
+    "production-and-industrial-engineering-new",
+    "entry-level-sales-solution",
+    "interpersonal-communications",
+    "entry-level-sales-7-1-%28americas%29",
+    "following-instructions-v1-us-r2",
+    "production-engineering-new",
+    "electronics-and-telecommunications-engineering-new"
+  ],
+  "hits": [
+    "marketing-new",
+    "interpersonal-communications"
+  ],
+  "missing_truth_in_catalog": [],
+  "truth_ranks_within_topN": {
+    "english-comprehension-new": null,
+    "interpersonal-communications": 6,
+    "marketing-new": 1,
+    "shl-verify-interactive-inductive-reasoning": 117,
+    "verify-verbal-ability-next-generation": 138
+  },
+  "ranked_topN": [
+    {
+      "rank": 1,
+      "slug": "marketing-new",
+      "name": "Marketing (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/marketing-new",
+      "score": 0.5130786895751953,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 2,
+      "slug": "digital-advertising-new",
+      "name": "Digital Advertising (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/digital-advertising-new",
+      "score": 0.47401368618011475,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 3,
+      "slug": "following-instructions-v1-uk-r1",
+      "name": "Following Instructions v1 - UK (R1)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/following-instructions-v1-uk-r1",
+      "score": 0.43855857849121094,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 4,
+      "slug": "production-and-industrial-engineering-new",
+      "name": "Production and Industrial Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/production-and-industrial-engineering-new",
+      "score": 0.41397523880004883,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 5,
+      "slug": "entry-level-sales-solution",
+      "name": "Entry Level Sales Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-solution",
+      "score": 0.41343581676483154,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 6,
+      "slug": "interpersonal-communications",
+      "name": "Interpersonal Communications",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/interpersonal-communications",
+      "score": 0.41175439953804016,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 7,
+      "slug": "entry-level-sales-7-1-%28americas%29",
+      "name": "Entry level Sales 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-7-1-%28americas%29",
+      "score": 0.4102061092853546,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 8,
+      "slug": "following-instructions-v1-us-r2",
+      "name": "Following Instructions v1 - US (R2)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/following-instructions-v1-us-r2",
+      "score": 0.4095950126647949,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 9,
+      "slug": "production-engineering-new",
+      "name": "Production Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/production-engineering-new",
+      "score": 0.40760862827301025,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 10,
+      "slug": "electronics-and-telecommunications-engineering-new",
+      "name": "Electronics & Telecommunications Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/electronics-and-telecommunications-engineering-new",
+      "score": 0.4063643217086792,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 11,
+      "slug": "entry-level-customer-serv-retail-and-contact-center",
+      "name": "Entry Level Customer Serv-Retail & Contact Center",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-serv-retail-and-contact-center",
+      "score": 0.4054170250892639,
+      "test_type": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "rank": 12,
+      "slug": "written-english-v1",
+      "name": "Written English v1",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/written-english-v1",
+      "score": 0.40330034494400024,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 13,
+      "slug": "verify-following-instructions",
+      "name": "Verify - Following Instructions",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-following-instructions",
+      "score": 0.4030548334121704,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 14,
+      "slug": "host-solution",
+      "name": "Host Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/host-solution",
+      "score": 0.40110498666763306,
+      "test_type": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 15,
+      "slug": "microservices-new",
+      "name": "Microservices (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/microservices-new",
+      "score": 0.4000025987625122,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 16,
+      "slug": "professional-7-0-solution-3958",
+      "name": "Professional + 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-0-solution-3958",
+      "score": 0.3999365568161011,
+      "test_type": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 17,
+      "slug": "core-java-advanced-level-new",
+      "name": "Core Java (Advanced Level) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/core-java-advanced-level-new",
+      "score": 0.3988988399505615,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 18,
+      "slug": "sales-transformation-report-individual-contributor",
+      "name": "Sales Transformation 1.0 - Individual Contributor",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-transformation-report-individual-contributor",
+      "score": 0.39753061532974243,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 19,
+      "slug": "salestransformationreport2-0-individualcontributor",
+      "name": "Sales Transformation 2.0 - Individual Contributor",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/salestransformationreport2-0-individualcontributor",
+      "score": 0.39649689197540283,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 20,
+      "slug": "industrial-engineering-new",
+      "name": "Industrial Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/industrial-engineering-new",
+      "score": 0.3964298963546753,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 21,
+      "slug": "contact-center-customer-service-8-0-4269",
+      "name": "Contact Center Customer Service 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-customer-service-8-0-4269",
+      "score": 0.39597493410110474,
+      "test_type": [
+        "S",
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 22,
+      "slug": "entry-level-customer-service-7-1-%28south-africa%29",
+      "name": "Entry Level Customer Service 7.1 (South Africa)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-7-1-%28south-africa%29",
+      "score": 0.3959416151046753,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 23,
+      "slug": "core-java-entry-level-new",
+      "name": "Core Java (Entry Level) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/core-java-entry-level-new",
+      "score": 0.39553964138031006,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 24,
+      "slug": "telecommunications-engineering-new",
+      "name": "Telecommunications Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/telecommunications-engineering-new",
+      "score": 0.39343124628067017,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 25,
+      "slug": "event-sales-manager-solution",
+      "name": "Event Sales Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/event-sales-manager-solution",
+      "score": 0.39309555292129517,
+      "test_type": [
+        "S",
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 26,
+      "slug": "training-development",
+      "name": "Training Development",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/training-development",
+      "score": 0.39304956793785095,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 27,
+      "slug": "entry-level-sales-7-1",
+      "name": "Entry level Sales 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-7-1",
+      "score": 0.3904855251312256,
+      "test_type": [
+        "P",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 28,
+      "slug": "job-control-language-new",
+      "name": "Job Control Language (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/job-control-language-new",
+      "score": 0.3898237943649292,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 29,
+      "slug": "verify-working-with-information",
+      "name": "Verify - Working with Information",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-working-with-information",
+      "score": 0.3889831602573395,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 30,
+      "slug": "sales-professional-7-0-solution",
+      "name": "Sales Professional 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-7-0-solution",
+      "score": 0.3889087438583374,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 31,
+      "slug": "networking-and-implementation-new",
+      "name": "Networking and Implementation (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/networking-and-implementation-new",
+      "score": 0.38848263025283813,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 32,
+      "slug": "electronics-and-embedded-systems-engineering-new",
+      "name": "Electronics and Embedded Systems Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/electronics-and-embedded-systems-engineering-new",
+      "score": 0.3874152898788452,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 33,
+      "slug": "customer-service-with-sales-short-form",
+      "name": "Customer Service with Sales - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-with-sales-short-form",
+      "score": 0.38499313592910767,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 34,
+      "slug": "verify-interactive-ability-report",
+      "name": "Verify Interactive Ability Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-interactive-ability-report",
+      "score": 0.3843349814414978,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 35,
+      "slug": "entry-level-customer-service-%28retail-and-cc%29-7-1",
+      "name": "Entry Level Customer Service 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-%28retail-and-cc%29-7-1",
+      "score": 0.3842293620109558,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 36,
+      "slug": "sales-professional-solution",
+      "name": "Sales Professional Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-solution",
+      "score": 0.3837236762046814,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 37,
+      "slug": "c-programming-new",
+      "name": "C Programming (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/c-programming-new",
+      "score": 0.3836427628993988,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 38,
+      "slug": "accounts-payable-new",
+      "name": "Accounts Payable (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/accounts-payable-new",
+      "score": 0.38238996267318726,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 39,
+      "slug": "social-media-new",
+      "name": "Social Media (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/social-media-new",
+      "score": 0.3803679347038269,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 40,
+      "slug": "uipath-rpa-development-new",
+      "name": "UiPath RPA Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/uipath-rpa-development-new",
+      "score": 0.3794912099838257,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 41,
+      "slug": "svar-spoken-english-aus",
+      "name": "SVAR - Spoken English (AUS)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/svar-spoken-english-aus",
+      "score": 0.37935495376586914,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 42,
+      "slug": "sap-sd-sales-and-distribution-new",
+      "name": "SAP SD (Sales and Distribution) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-sd-sales-and-distribution-new",
+      "score": 0.3786248564720154,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 43,
+      "slug": "contact-center-sales-and-service-8-0-4268",
+      "name": "Contact Center Sales & Service 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-sales-and-service-8-0-4268",
+      "score": 0.37663012742996216,
+      "test_type": [
+        "S",
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 44,
+      "slug": "adobe-experience-manager-new",
+      "name": "Adobe Experience Manager (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/adobe-experience-manager-new",
+      "score": 0.3759849965572357,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 45,
+      "slug": "sales-representative-solution",
+      "name": "Sales Representative Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-representative-solution",
+      "score": 0.3755645751953125,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 46,
+      "slug": "search-engine-optimization-new",
+      "name": "Search Engine Optimization (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/search-engine-optimization-new",
+      "score": 0.3747172951698303,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 47,
+      "slug": "digital-readiness-development-report",
+      "name": "Digital Readiness Development Report - IC",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/digital-readiness-development-report",
+      "score": 0.37347203493118286,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 48,
+      "slug": "svar-spoken-english-us-new",
+      "name": "SVAR - Spoken English (US) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/svar-spoken-english-us-new",
+      "score": 0.3733270764350891,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 49,
+      "slug": "svar-spoken-english-u-k",
+      "name": "SVAR - Spoken English (U.K.)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/svar-spoken-english-u-k",
+      "score": 0.3718896806240082,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 50,
+      "slug": "siebel-development-new",
+      "name": "Siebel Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/siebel-development-new",
+      "score": 0.371813029050827,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 51,
+      "slug": "unix-new",
+      "name": "UNIX (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/unix-new",
+      "score": 0.3717453181743622,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 52,
+      "slug": "svar-spoken-english-indian-accent-new",
+      "name": "SVAR - Spoken English (Indian Accent) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/svar-spoken-english-indian-accent-new",
+      "score": 0.37134289741516113,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 53,
+      "slug": "food-and-beverage-services-new",
+      "name": "Food and Beverage Services (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/food-and-beverage-services-new",
+      "score": 0.37056970596313477,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 54,
+      "slug": "entry-level-customer-service-7-1-%28americas%29",
+      "name": "Entry Level Customer Service 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-7-1-%28americas%29",
+      "score": 0.37004151940345764,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 55,
+      "slug": "server-solution",
+      "name": "Server Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/server-solution",
+      "score": 0.3692435026168823,
+      "test_type": [
+        "B",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 56,
+      "slug": "sales-profiler-cards",
+      "name": "Sales Profiler Cards",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-profiler-cards",
+      "score": 0.3682839870452881,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 57,
+      "slug": "professional-7-0-solution",
+      "name": "Professional 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-0-solution",
+      "score": 0.36795371770858765,
+      "test_type": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 58,
+      "slug": "sales-engineer-solution",
+      "name": "Sales Engineer Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-engineer-solution",
+      "score": 0.36763691902160645,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 59,
+      "slug": "phone-banker-short-form",
+      "name": "Phone Banker - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/phone-banker-short-form",
+      "score": 0.36710935831069946,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 60,
+      "slug": "ruby-new",
+      "name": "Ruby (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ruby-new",
+      "score": 0.36680322885513306,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 61,
+      "slug": "entry-level-customer-service-general-solution",
+      "name": "Entry Level Customer Service (General) Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-customer-service-general-solution",
+      "score": 0.366388738155365,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 62,
+      "slug": "swing-new",
+      "name": "Swing (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/swing-new",
+      "score": 0.3659364581108093,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 63,
+      "slug": "data-entry-ten-key-split-screen",
+      "name": "Data Entry Ten Key Split Screen",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/data-entry-ten-key-split-screen",
+      "score": 0.36537060141563416,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 64,
+      "slug": "gaming-manager-solution",
+      "name": "Gaming Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/gaming-manager-solution",
+      "score": 0.36476653814315796,
+      "test_type": [
+        "S",
+        "A",
+        "B",
+        "K",
+        "P"
+      ]
+    },
+    {
+      "rank": 65,
+      "slug": "sales-interview-guide",
+      "name": "Sales Interview Guide",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-interview-guide",
+      "score": 0.36371779441833496,
+      "test_type": [
+        "P",
+        "P"
+      ]
+    },
+    {
+      "rank": 66,
+      "slug": "proofreading-v1",
+      "name": "Proofreading v1",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/proofreading-v1",
+      "score": 0.36353248357772827,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 67,
+      "slug": "districtregional-manager-solution",
+      "name": "District/Regional Manager Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/districtregional-manager-solution",
+      "score": 0.36276692152023315,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 68,
+      "slug": "senior-sales-professional-solution",
+      "name": "Senior Sales Professional Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/senior-sales-professional-solution",
+      "score": 0.36263972520828247,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 69,
+      "slug": "java-web-services-new",
+      "name": "Java Web Services (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-web-services-new",
+      "score": 0.36173999309539795,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 70,
+      "slug": "java-8-new",
+      "name": "Java 8 (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-8-new",
+      "score": 0.3617311120033264,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 71,
+      "slug": "sales-professional-7-1-%28americas%29",
+      "name": "Sales Professional 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sales-professional-7-1-%28americas%29",
+      "score": 0.36170002818107605,
+      "test_type": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 72,
+      "slug": "agile-software-development",
+      "name": "Agile Software Development",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/agile-software-development",
+      "score": 0.3616570234298706,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 73,
+      "slug": "professionalindividual-contributor-short-form",
+      "name": "Professional/Individual Contributor - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professionalindividual-contributor-short-form",
+      "score": 0.36140233278274536,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 74,
+      "slug": "professional-7-1-solution-4247",
+      "name": "Professional 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-1-solution-4247",
+      "score": 0.361333429813385,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 75,
+      "slug": "entry-level-sales-sift-out-7-1",
+      "name": "Entry Level Sales Sift Out 7.1",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-sales-sift-out-7-1",
+      "score": 0.3612763583660126,
+      "test_type": [
+        "C",
+        "P",
+        "B"
+      ]
+    },
+    {
+      "rank": 76,
+      "slug": "r-programming-new",
+      "name": "R Programming (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/r-programming-new",
+      "score": 0.36103126406669617,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 77,
+      "slug": "geoinformatics-engineering-new",
+      "name": "Geoinformatics Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/geoinformatics-engineering-new",
+      "score": 0.36072155833244324,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 78,
+      "slug": "mq-candidate-motivation-report",
+      "name": "MQ Candidate Motivation Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/mq-candidate-motivation-report",
+      "score": 0.36058294773101807,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 79,
+      "slug": "salesforce-development-new",
+      "name": "Salesforce Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/salesforce-development-new",
+      "score": 0.36049216985702515,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 80,
+      "slug": "android-development-new",
+      "name": "Android Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/android-development-new",
+      "score": 0.36048197746276855,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 81,
+      "slug": "contact-center-sales-and-service-8-0",
+      "name": "Contact Center Sales & Service + 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-center-sales-and-service-8-0",
+      "score": 0.36008787155151367,
+      "test_type": [
+        "P",
+        "B",
+        "C",
+        "A",
+        "S"
+      ]
+    },
+    {
+      "rank": 82,
+      "slug": "accounts-receivable-new",
+      "name": "Accounts Receivable (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/accounts-receivable-new",
+      "score": 0.3599710166454315,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 83,
+      "slug": "entry-level-technical-support-solution",
+      "name": "Entry Level Technical Support Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-technical-support-solution",
+      "score": 0.35960304737091064,
+      "test_type": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "rank": 84,
+      "slug": "smart-interview-live-coding",
+      "name": "Smart Interview Live Coding",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/smart-interview-live-coding",
+      "score": 0.35882797837257385,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 85,
+      "slug": "operations-management-new",
+      "name": "Operations Management (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/operations-management-new",
+      "score": 0.358693927526474,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 86,
+      "slug": "technology-professional-8-0-job-focused-assessment",
+      "name": "Technology Professional 8.0 Job Focused Assessment",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/technology-professional-8-0-job-focused-assessment",
+      "score": 0.358240008354187,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 87,
+      "slug": "verify-interactive-g-candidate-report",
+      "name": "Verify Interactive G+ Candidate Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-interactive-g-candidate-report",
+      "score": 0.35726743936538696,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 88,
+      "slug": "java-design-patterns-new",
+      "name": "Java Design Patterns (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-design-patterns-new",
+      "score": 0.3571981191635132,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 89,
+      "slug": "electronics-and-semiconductor-engineering-new",
+      "name": "Electronics and Semiconductor Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/electronics-and-semiconductor-engineering-new",
+      "score": 0.3569961190223694,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 90,
+      "slug": "paint-technology-new",
+      "name": "Paint Technology (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/paint-technology-new",
+      "score": 0.3565957844257355,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 91,
+      "slug": "ibm-sterling-order-management-system-new",
+      "name": "IBM Sterling Order Management System (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ibm-sterling-order-management-system-new",
+      "score": 0.3559671938419342,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 92,
+      "slug": "retail-consultant-solution",
+      "name": "Retail Consultant Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/retail-consultant-solution",
+      "score": 0.3558259606361389,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 93,
+      "slug": "teradata-development-new",
+      "name": "Teradata Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/teradata-development-new",
+      "score": 0.35573408007621765,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 94,
+      "slug": "financial-accounting-new",
+      "name": "Financial Accounting (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/financial-accounting-new",
+      "score": 0.35542938113212585,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 95,
+      "slug": "customer-service-short-form",
+      "name": "Customer Service - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-short-form",
+      "score": 0.3551386296749115,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 96,
+      "slug": "net-mvvm-new",
+      "name": ".NET MVVM (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/net-mvvm-new",
+      "score": 0.3545490503311157,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 97,
+      "slug": "entry-level-cashier-solution",
+      "name": "Entry Level Cashier Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-cashier-solution",
+      "score": 0.35446810722351074,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 98,
+      "slug": "automation-anywhere-rpa-development-new",
+      "name": "Automation Anywhere RPA Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/automation-anywhere-rpa-development-new",
+      "score": 0.35433849692344666,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 99,
+      "slug": "store-manager-7-1-%28international%29",
+      "name": "Store Manager 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/store-manager-7-1-%28international%29",
+      "score": 0.3539581894874573,
+      "test_type": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "rank": 100,
+      "slug": "director-short-form",
+      "name": "Director - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/director-short-form",
+      "score": 0.3538185954093933,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 101,
+      "slug": "pjm-development-report",
+      "name": "PJM Development Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/pjm-development-report",
+      "score": 0.35380375385284424,
+      "test_type": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 102,
+      "slug": "contact-centre-agent-solution-uk",
+      "name": "Contact Centre Agent Solution - UK",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/contact-centre-agent-solution-uk",
+      "score": 0.35377469658851624,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 103,
+      "slug": "data-science-new",
+      "name": "Data Science (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/data-science-new",
+      "score": 0.35362669825553894,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 104,
+      "slug": "biztalk-new",
+      "name": "BizTalk (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/biztalk-new",
+      "score": 0.35318422317504883,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 105,
+      "slug": "reviewing-forms-us-r1",
+      "name": "Reviewing Forms - US (R1)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/reviewing-forms-us-r1",
+      "score": 0.35299932956695557,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 106,
+      "slug": "c-programming-new-4039",
+      "name": "C# Programming (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/c-programming-new-4039",
+      "score": 0.35211220383644104,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 107,
+      "slug": "sap-materials-management-new",
+      "name": "SAP Materials Management (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-materials-management-new",
+      "score": 0.3518028259277344,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 108,
+      "slug": "electrical-and-electronics-engineering-new",
+      "name": "Electrical and Electronics Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/electrical-and-electronics-engineering-new",
+      "score": 0.35160917043685913,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 109,
+      "slug": "professional-7-1-%28americas%29",
+      "name": "Professional + 7.1 (Americas)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/professional-7-1-%28americas%29",
+      "score": 0.35154712200164795,
+      "test_type": [
+        "B",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "rank": 110,
+      "slug": "load-runner-new",
+      "name": "Load Runner (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/load-runner-new",
+      "score": 0.3515057861804962,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 111,
+      "slug": "sonarqube-new",
+      "name": "SonarQube (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sonarqube-new",
+      "score": 0.3513152599334717,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 112,
+      "slug": "apache-hive-new",
+      "name": "Apache Hive (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/apache-hive-new",
+      "score": 0.3508293330669403,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 113,
+      "slug": "conversational-multichat-simulation",
+      "name": "Conversational Multichat Simulation",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/conversational-multichat-simulation",
+      "score": 0.3507252037525177,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 114,
+      "slug": "reservation-agent-solution",
+      "name": "Reservation Agent Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/reservation-agent-solution",
+      "score": 0.3499724864959717,
+      "test_type": [
+        "A",
+        "P",
+        "S",
+        "B"
+      ]
+    },
+    {
+      "rank": 115,
+      "slug": "pega-development-new",
+      "name": "Pega Development (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/pega-development-new",
+      "score": 0.34987783432006836,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 116,
+      "slug": "personal-banker-short-form",
+      "name": "Personal Banker - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/personal-banker-short-form",
+      "score": 0.3495180010795593,
+      "test_type": [
+        "A",
+        "B",
+        "K",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 117,
+      "slug": "shl-verify-interactive-inductive-reasoning",
+      "name": "SHL Verify Interactive - Inductive Reasoning",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/shl-verify-interactive-inductive-reasoning",
+      "score": 0.34942108392715454,
+      "test_type": [
+        "A",
+        "S"
+      ]
+    },
+    {
+      "rank": 118,
+      "slug": "mechatronics-engineering-new",
+      "name": "Mechatronics Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/mechatronics-engineering-new",
+      "score": 0.34935444593429565,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 119,
+      "slug": "prepline-cook-solution",
+      "name": "Prep/Line Cook Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/prepline-cook-solution",
+      "score": 0.34873029589653015,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 120,
+      "slug": "shl-verify-interactive-deductive-reasoning",
+      "name": "SHL Verify Interactive – Deductive Reasoning",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/shl-verify-interactive-deductive-reasoning",
+      "score": 0.348448783159256,
+      "test_type": [
+        "A",
+        "S"
+      ]
+    },
+    {
+      "rank": 121,
+      "slug": "digital-readiness-development-report-manager",
+      "name": "Digital Readiness Development Report - Manager",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/digital-readiness-development-report-manager",
+      "score": 0.34841910004615784,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 122,
+      "slug": "project-manager-short-form",
+      "name": "Project Manager - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/project-manager-short-form",
+      "score": 0.34841474890708923,
+      "test_type": [
+        "A",
+        "B",
+        "P",
+        "S"
+      ]
+    },
+    {
+      "rank": 123,
+      "slug": "customer-service-short-form-uk",
+      "name": "Customer Service - Short Form - UK",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/customer-service-short-form-uk",
+      "score": 0.34729570150375366,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 124,
+      "slug": "financial-and-banking-services-new",
+      "name": "Financial and Banking Services (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/financial-and-banking-services-new",
+      "score": 0.34688419103622437,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 125,
+      "slug": "manual-testing-new",
+      "name": "Manual Testing (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manual-testing-new",
+      "score": 0.34684354066848755,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 126,
+      "slug": "vlsi-and-embedded-systems-new",
+      "name": "VLSI and Embedded Systems (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/vlsi-and-embedded-systems-new",
+      "score": 0.34683436155319214,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 127,
+      "slug": "ms-word-new",
+      "name": "MS Word (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ms-word-new",
+      "score": 0.3464046120643616,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 128,
+      "slug": "javascript-new",
+      "name": "JavaScript (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/javascript-new",
+      "score": 0.3459109663963318,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 129,
+      "slug": "automotive-engineering-new",
+      "name": "Automotive Engineering (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/automotive-engineering-new",
+      "score": 0.345403254032135,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 130,
+      "slug": "dsi-v1-1-interpretation-report",
+      "name": "DSI v1.1 Interpretation Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/dsi-v1-1-interpretation-report",
+      "score": 0.34486860036849976,
+      "test_type": [
+        "P"
+      ]
+    },
+    {
+      "rank": 131,
+      "slug": "culinary-skills-new",
+      "name": "Culinary Skills (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/culinary-skills-new",
+      "score": 0.3447260856628418,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 132,
+      "slug": "software-business-analysis",
+      "name": "Software Business Analysis",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/software-business-analysis",
+      "score": 0.3447237014770508,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 133,
+      "slug": "desktop-support-new",
+      "name": "Desktop Support (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/desktop-support-new",
+      "score": 0.34435468912124634,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 134,
+      "slug": "sap-abap-intermediate-level-new",
+      "name": "SAP ABAP (Intermediate Level) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/sap-abap-intermediate-level-new",
+      "score": 0.3442527651786804,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 135,
+      "slug": "java-frameworks-new",
+      "name": "Java Frameworks (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-frameworks-new",
+      "score": 0.3442266583442688,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 136,
+      "slug": "spelling-u-s-new",
+      "name": "Spelling (U.S.) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/spelling-u-s-new",
+      "score": 0.3441963195800781,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 137,
+      "slug": "data-entry-numeric-split-screen-us",
+      "name": "Data Entry Numeric Split Screen - US",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/data-entry-numeric-split-screen-us",
+      "score": 0.3434372544288635,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 138,
+      "slug": "verify-verbal-ability-next-generation",
+      "name": "Verify - Verbal Ability - Next Generation",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/verify-verbal-ability-next-generation",
+      "score": 0.34323257207870483,
+      "test_type": [
+        "A"
+      ]
+    },
+    {
+      "rank": 139,
+      "slug": "human-resources-new",
+      "name": "Human Resources (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/human-resources-new",
+      "score": 0.3428257703781128,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 140,
+      "slug": "manager-7-0-solution-3955",
+      "name": "Manager + 7.0 Solution",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/manager-7-0-solution-3955",
+      "score": 0.3423408269882202,
+      "test_type": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "rank": 141,
+      "slug": "360-digital-report",
+      "name": "360 Digital Report",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/360-digital-report",
+      "score": 0.34230589866638184,
+      "test_type": [
+        "D"
+      ]
+    },
+    {
+      "rank": 142,
+      "slug": "typing-new",
+      "name": "Typing (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/typing-new",
+      "score": 0.3422689437866211,
+      "test_type": [
+        "S"
+      ]
+    },
+    {
+      "rank": 143,
+      "slug": "ruby-on-rails-new",
+      "name": "Ruby on Rails (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ruby-on-rails-new",
+      "score": 0.34196192026138306,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 144,
+      "slug": "entry-level-cashier-7-1-%28international%29",
+      "name": "Entry Level Cashier 7.1 (International)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/entry-level-cashier-7-1-%28international%29",
+      "score": 0.341921865940094,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 145,
+      "slug": "ibm-datastage-new",
+      "name": "IBM DataStage (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/ibm-datastage-new",
+      "score": 0.3413904905319214,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 146,
+      "slug": "programming-concepts",
+      "name": "Programming Concepts",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/programming-concepts",
+      "score": 0.3410581350326538,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 147,
+      "slug": "informatica-architecture-new",
+      "name": "Informatica (Architecture) (New)",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/informatica-architecture-new",
+      "score": 0.3401459753513336,
+      "test_type": [
+        "K"
+      ]
+    },
+    {
+      "rank": 148,
+      "slug": "bank-collections-agent-short-form",
+      "name": "Bank Collections Agent - Short Form",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/bank-collections-agent-short-form",
+      "score": 0.34002259373664856,
+      "test_type": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "rank": 149,
+      "slug": "mechanical-focus-8-0",
+      "name": "Manufacturing & Industrial - Mechanical Focus 8.0",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/mechanical-focus-8-0",
+      "score": 0.3398965001106262,
+      "test_type": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "rank": 150,
+      "slug": "universal-competency-framework-interview-guide",
+      "name": "Universal Competency Framework Interview Guide",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/universal-competency-framework-interview-guide",
+      "score": 0.33981579542160034,
+      "test_type": [
+        "C",
+        "P"
+      ]
+    }
+  ]
+}
