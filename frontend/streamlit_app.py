@@ -1,11 +1,11 @@
 import os
 import requests
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(page_title="SHL Assessment Recommender", layout="wide")
 
-DEFAULT_API = "https://shl-assessment-reco-t8zx.onrender.com"
-API_BASE = os.getenv("API_BASE", DEFAULT_API).rstrip("/")
+API_BASE = os.getenv("API_BASE", "http://127.0.0.1:8000").rstrip("/")
 
 st.title("SHL Assessment Recommender")
 st.caption("Enter a natural language query, paste a JD, or paste a JD URL. Returns SHL assessment recommendations.")
@@ -21,22 +21,6 @@ top_k = st.slider("Top K", min_value=5, max_value=10, value=10)
 st.write("**API Base**")
 st.code(API_BASE)
 
-def render_table(rows):
-    # Markdown table (no pandas, no pyarrow)
-    st.subheader("Recommendations")
-    md = "| # | Name | URL | Score |\n|---:|---|---|---:|\n"
-    for i, r in enumerate(rows):
-        name = (r.get("name") or "").replace("\n", " ")
-        url = r.get("url") or ""
-        score = r.get("score")
-        score_str = f"{score:.4f}" if isinstance(score, (int, float)) else ""
-        md += f"| {i} | {name} | [link]({url}) | {score_str} |\n"
-    st.markdown(md)
-
-    # Expandable rich payload
-    with st.expander("Raw JSON"):
-        st.json({"recommended_assessments": rows})
-
 if st.button("Recommend"):
     if not query.strip():
         st.error("Query cannot be empty.")
@@ -51,7 +35,7 @@ if st.button("Recommend"):
 
     payload = {"query": query, "top_k": top_k}
     try:
-        r = requests.post(f"{API_BASE}/recommend", json=payload, timeout=45)
+        r = requests.post(f"{API_BASE}/recommend", json=payload, timeout=60)
         r.raise_for_status()
         data = r.json()
     except Exception as e:
@@ -64,4 +48,29 @@ if st.button("Recommend"):
         st.json(data)
         st.stop()
 
-    render_table(recs)
+    df = pd.DataFrame(recs)
+
+    # Make sure these columns exist (robust)
+    for col in ["description", "duration", "remote_support", "adaptive_support", "test_type", "score"]:
+        if col not in df.columns:
+            df[col] = None
+
+    # Render list nicely
+    df["test_type"] = df["test_type"].apply(lambda x: ", ".join(x) if isinstance(x, list) else (x or ""))
+
+    # Order columns
+    cols = ["name", "url", "score", "duration", "remote_support", "adaptive_support", "test_type", "description"]
+    cols = [c for c in cols if c in df.columns]
+    df = df[cols]
+
+    st.subheader("Recommendations")
+    st.dataframe(
+        df,
+        use_container_width=True,
+        column_config={
+            "url": st.column_config.LinkColumn("URL"),
+        },
+    )
+
+    with st.expander("Raw JSON"):
+        st.json(data)
