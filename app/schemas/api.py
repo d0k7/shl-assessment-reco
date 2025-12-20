@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from typing import List
-from pydantic import BaseModel, Field, HttpUrl, field_validator
+from typing import List, Optional, Union
+from pydantic import BaseModel, Field, AnyUrl, field_validator
 
 
 class HealthResponse(BaseModel):
@@ -21,13 +21,25 @@ class RecommendRequest(BaseModel):
 
 
 class RecommendedAssessment(BaseModel):
-    name: str
-    url: HttpUrl
+    name: str = ""
+    url: Union[AnyUrl, str] = ""  # allow AnyUrl, but don't crash if slightly malformed
     description: str = ""
     duration: int = 0
     remote_support: str = "No"
     adaptive_support: str = "No"
     test_type: List[str] = Field(default_factory=list)
+
+    # ✅ NEW: always return a numeric score
+    score: float = 0.0
+
+    @field_validator("url")
+    @classmethod
+    def url_must_not_be_blank(cls, v):
+        # Allow empty string if something goes wrong, but avoid None
+        if v is None:
+            return ""
+        s = str(v).strip()
+        return s
 
 
 class RecommendResponse(BaseModel):

@@ -5,12 +5,11 @@ import pandas as pd
 
 st.set_page_config(page_title="SHL Assessment Recommender", layout="wide")
 
-DEFAULT_API = os.getenv("API_BASE", "https://shl-assessment-reco-t8zx.onrender.com").rstrip("/")
+DEFAULT_API = os.getenv("API_BASE", "http://127.0.0.1:8000").rstrip("/")
+api_base = st.text_input("API Base", value=DEFAULT_API).rstrip("/")
 
 st.title("SHL Assessment Recommender")
 st.caption("Enter a natural language query, paste a JD, or paste a JD URL. Returns SHL assessment recommendations.")
-
-api_base = st.text_input("API Base", value=DEFAULT_API).rstrip("/")
 
 query = st.text_area(
     "Query / JD Text / JD URL",
@@ -32,15 +31,14 @@ if st.button("Recommend"):
         st.error(f"API health check failed: {e}")
         st.stop()
 
-    payload = {"query": query, "top_k": top_k}
+    payload = {"query": query, "top_k": int(top_k)}
 
     try:
         r = requests.post(f"{api_base}/recommend", json=payload, timeout=60)
         if r.status_code >= 400:
-            # show backend error detail if FastAPI returned it
             st.error(f"/recommend failed: {r.status_code}")
             try:
-                st.json(r.json())
+                st.json(r.json())  # shows FastAPI error detail
             except Exception:
                 st.text(r.text)
             st.stop()
@@ -57,13 +55,29 @@ if st.button("Recommend"):
 
     df = pd.DataFrame(recs)
 
-    # Make URL clickable if present
-    if "url" in df.columns:
-        df["url"] = df["url"].apply(lambda u: f"[link]({u})" if isinstance(u, str) and u else "")
+    # Ensure ALL expected columns exist (even if backend misses them)
+    expected = [
+        "name",
+        "url",
+        "description",
+        "duration",
+        "remote_support",
+        "adaptive_support",
+        "test_type",
+        "score",
+    ]
+    for c in expected:
+        if c not in df.columns:
+            df[c] = ""
 
-    # Ensure score visible
-    if "score" in df.columns:
-        df["score"] = pd.to_numeric(df["score"], errors="coerce").round(6)
+    # Make url clickable
+    df["url"] = df["url"].apply(lambda u: f"[link]({u})" if isinstance(u, str) and u else "")
+
+    # Score numeric formatting
+    df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0).round(6)
+
+    # Force SAME column order everywhere
+    df = df[expected]
 
     st.subheader("Recommendations")
     st.dataframe(df, use_container_width=True)
