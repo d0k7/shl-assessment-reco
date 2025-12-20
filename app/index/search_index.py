@@ -2,19 +2,48 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from rank_bm25 import BM25Okapi
 
 CATALOG_PATH = Path("data/catalog.jsonl")
 
+_WORD_RE = re.compile(r"[a-z0-9\+#\.]+")
+
+STOPWORDS = {
+    "a","an","the","and","or","to","of","in","on","for","with","as","at","by","from",
+    "is","are","was","were","be","been","being","this","that","these","those",
+    "need","needs","needed","want","wants","looking","require","required",
+    "good","great","strong","must","should","who","able","ability",
+    "team","teams","stakeholder","stakeholders","external","internal","collaborate","collaborating","collaboration",
+}
+
+# Skill intent mapping (expand if you want)
+SKILL_SYNONYMS: Dict[str, List[str]] = {
+    "java": ["java", "j2ee", "jee", "spring", "hibernate", "struts", "jdk"],
+    "python": ["python", "django", "flask", "fastapi"],
+    "javascript": ["javascript", "js", "node", "nodejs", "react", "angular", "vue"],
+    "sql": ["sql", "postgres", "mysql", "oracle", "sqlite"],
+}
+
+
+def canonicalize_url(url: str) -> str:
+    u = (url or "").strip()
+    if not u:
+        return u
+    # normalize trailing slash (prevents duplicates)
+    if u.endswith("/"):
+        u = u.rstrip("/")
+    return u
+
 
 def _tokenize(text: str) -> List[str]:
-    text = text.lower()
-    # keep words/numbers; split on everything else
-    return re.findall(r"[a-z0-9]+", text)
+    text = (text or "").lower()
+    toks = _WORD_RE.findall(text)
+    # remove stopwords
+    return [t for t in toks if t and t not in STOPWORDS]
 
 
 def _safe_int(x: Any) -> Optional[int]:
@@ -44,14 +73,56 @@ def _as_list_str(x: Any) -> List[str]:
         return []
     if isinstance(x, list):
         return [str(v) for v in x if v is not None]
-    # sometimes stored as "A B K" or "A,B,K"
     s = str(x).strip()
     if not s:
         return []
     if "," in s:
         return [p.strip() for p in s.split(",") if p.strip()]
-    # space separated
     return [p.strip() for p in s.split() if p.strip()]
+
+
+def _bool_to_yesno(x: Optional[bool]) -> str:
+    if x is True:
+        return "Yes"
+    return "No"
+
+
+def detect_skills(query: str) -> List[str]:
+    q = (query or "").lower()
+    found: List[str] = []
+    for skill, syns in SKILL_SYNONYMS.items():
+        if any(s in q for s in syns):
+            found.append(skill)
+    return found
+
+
+def contains_skill(text: str, skill: str) -> bool:
+    t = (text or "").lower()
+    for s in SKILL_SYNONYMS.get(skill, [skill]):
+        if s in t:
+            return True
+    return False
+
+
+def boost_score(query_skills: List[str], name: str, doc_text: str) -> float:
+    """
+    Strong boost if assessment NAME contains the skill, medium if description contains it.
+    """
+    score = 0.0
+    n = (name or "").lower()
+    d = (doc_text or "").lower()
+
+    for sk in query_skills:
+        if contains_skill(n, sk):
+            score += 20.0
+        elif contains_skill(d, sk):
+            score += 8.0
+
+    # small role-intent bonus
+    if "developer" in d or "programmer" in d or "software" in d:
+        score += 2.0
+
+    return score
 
 
 @dataclass(frozen=True)
@@ -62,7 +133,7 @@ class CatalogItem:
     duration: Optional[int] = None
     remote_support: Optional[bool] = None
     adaptive_support: Optional[bool] = None
-    test_type: List[str] = None  # type: ignore[assignment]
+    test_type: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -70,10 +141,10 @@ class Artifacts:
     items: List[CatalogItem]
     bm25: BM25Okapi
     corpus_tokens: List[List[str]]
+    texts: List[str]
 
 
 def _item_to_text(it: CatalogItem) -> str:
-    # This text drives ranking. Keep it compact but informative.
     parts = [
         it.name,
         " ".join(it.test_type or []),
@@ -94,17 +165,16 @@ def load_artifacts() -> Artifacts:
             line = line.strip()
             if not line:
                 continue
+
             obj: Dict[str, Any] = json.loads(line)
 
             name = str(obj.get("name", "")).strip()
-            url = str(obj.get("url", "")).strip()
+            url = canonicalize_url(str(obj.get("url", "")).strip())
             if not name or not url:
                 continue
 
-            # --- map fields robustly (catalog.jsonl may vary) ---
             description = str(obj.get("description") or obj.get("desc") or "").strip()
 
-            # duration might be stored in different keys
             duration = _safe_int(
                 obj.get("duration")
                 or obj.get("assessment_length")
@@ -114,7 +184,6 @@ def load_artifacts() -> Artifacts:
 
             remote_support = _as_bool(obj.get("remote_support") or obj.get("remote_testing"))
             adaptive_support = _as_bool(obj.get("adaptive_support") or obj.get("adaptive"))
-
             test_type = _as_list_str(obj.get("test_type") or obj.get("testTypes") or obj.get("type_codes"))
 
             it = CatalogItem(
@@ -133,7 +202,7 @@ def load_artifacts() -> Artifacts:
     corpus_tokens = [_tokenize(t) for t in texts]
     bm25 = BM25Okapi(corpus_tokens)
 
-    return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens)
+    return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens, texts=texts)
 
 
 def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict[str, Any]]:
@@ -141,26 +210,53 @@ def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[D
     if not q_tokens:
         return []
 
-    scores = artifacts.bm25.get_scores(q_tokens)
-    # argsort descending
-    ranked_idx = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
+    skills = detect_skills(query)
 
+    scores = artifacts.bm25.get_scores(q_tokens)
+
+    # Candidate filtering: if query implies a skill (e.g., java), prefer items that contain it
+    candidate_idxs = list(range(len(scores)))
+    if skills:
+        filtered = []
+        for i in candidate_idxs:
+            if any(contains_skill(artifacts.texts[i], sk) for sk in skills):
+                filtered.append(i)
+        # only apply filter if we still have enough results, else fallback
+        if len(filtered) >= max(10, top_k):
+            candidate_idxs = filtered
+
+    # Rerank with boosts
+    reranked: List[Tuple[int, float]] = []
+    for i in candidate_idxs:
+        base = float(scores[i])
+        extra = boost_score(skills, artifacts.items[i].name, artifacts.texts[i])
+        reranked.append((i, base + extra))
+
+    reranked.sort(key=lambda x: x[1], reverse=True)
+
+    # Deduplicate by URL
     out: List[Dict[str, Any]] = []
-    for i in ranked_idx:
+    seen = set()
+
+    for i, final_score in reranked:
         it = artifacts.items[i]
-        score = float(scores[i])
+        if it.url in seen:
+            continue
+        seen.add(it.url)
 
         out.append(
             {
                 "name": it.name,
                 "url": it.url,
                 "description": it.description,
-                "duration": it.duration,
-                "remote_support": it.remote_support,
-                "adaptive_support": it.adaptive_support,
+                "duration": it.duration or 0,
+                "remote_support": _bool_to_yesno(it.remote_support),
+                "adaptive_support": _bool_to_yesno(it.adaptive_support),
                 "test_type": it.test_type or [],
-                "score": round(score, 6),
+                "score": round(float(final_score), 6),
             }
         )
+        if len(out) >= top_k:
+            break
 
     return out
