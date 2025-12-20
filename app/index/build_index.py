@@ -3,19 +3,48 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import List
+from urllib.parse import urlparse, urlunparse
 
 import faiss  # type: ignore
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
-from app.index.search_index import BM25Index, canonicalize_url, save_bm25
+from app.index.bm25 import BM25Index, save_bm25
 from app.schemas.catalog import CatalogItem
 
 
 CATALOG_JSONL = Path("data/catalog.jsonl")
 OUT_DIR = Path("data/index")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def canonicalize_url(url: str) -> str:
+    """
+    Deterministic URL canonicalization:
+    - force https
+    - drop query + fragment
+    - normalize host (strip www.)
+    - remove trailing slash (except root)
+    """
+    url = (url or "").strip()
+    if not url:
+        return url
+
+    if "://" not in url:
+        url = "https://" + url.lstrip("/")
+
+    p = urlparse(url)
+    scheme = "https"
+    netloc = (p.netloc or "").lower()
+    if netloc.startswith("www."):
+        netloc = netloc[4:]
+
+    path = p.path or ""
+    if len(path) > 1 and path.endswith("/"):
+        path = path[:-1]
+
+    return urlunparse((scheme, netloc, path, "", "", ""))
 
 
 def load_catalog_jsonl(path: str) -> List[CatalogItem]:
@@ -26,13 +55,16 @@ def load_catalog_jsonl(path: str) -> List[CatalogItem]:
             if not line:
                 continue
             obj = json.loads(line)
-            obj["url"] = canonicalize_url(str(obj["url"]))
+            obj["url"] = canonicalize_url(str(obj.get("url", "")))
             items.append(CatalogItem(**obj))
     return items
 
 
 def item_to_text(it: CatalogItem) -> str:
-    # Keep the text focused. Avoid huge boilerplate if your crawler includes it.
+    """
+    Focused text for embeddings/BM25:
+    include name + test_type + description.
+    """
     parts = [
         it.name,
         " ".join(it.test_type or []),
@@ -61,7 +93,7 @@ def main() -> None:
     X = np.vstack(emb_list)
     d = X.shape[1]
 
-    print("Building FAISS index (cosine)...")
+    print("Building FAISS index (cosine / inner product on normalized vectors)...")
     index = faiss.IndexFlatIP(d)
     index.add(X)
 
@@ -80,7 +112,7 @@ def main() -> None:
     bm25 = BM25Index.build(texts)
     save_bm25(bm25, str(bm25_path))
 
-    print("Saving index artifacts...")
+    print("Saving FAISS index...")
     faiss.write_index(index, str(faiss_path))
 
     with open(info_path, "w", encoding="utf-8") as f:
