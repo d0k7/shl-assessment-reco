@@ -5,7 +5,8 @@ import pandas as pd
 
 st.set_page_config(page_title="SHL Assessment Recommender", layout="wide")
 
-API_BASE = os.getenv("API_BASE", "http://127.0.0.1:8000").rstrip("/")
+DEFAULT_API_BASE = "https://shl-assessment-reco-t8zx.onrender.com"
+API_BASE = os.getenv("API_BASE", DEFAULT_API_BASE).rstrip("/")
 
 st.title("SHL Assessment Recommender")
 st.caption("Enter a natural language query, paste a JD, or paste a JD URL. Returns SHL assessment recommendations.")
