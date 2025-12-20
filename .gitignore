@@ -1,26 +1,13 @@
 # Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.egg-info/
-dist/
-build/
-
-# Virtual env
 .venv/
-venv/
-
-# OS / IDE
-.DS_Store
-.vscode/
-
-# Data artifacts (keep raw data out of git)
-data/*.jsonl
-data/*.json
-data/*.txt
-data/*.log
-
-# Secrets
 .env
-*.key
+
+# Index artifacts
+data/index/
+data/debug/
+
+# Generated outputs
+data/predictions.csv
+*.log

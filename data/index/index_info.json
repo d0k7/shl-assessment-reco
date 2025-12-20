@@ -1,7 +1,0 @@
-{
-  "count": 664,
-  "model": "sentence-transformers/all-MiniLM-L6-v2",
-  "faiss": "data\\index\\catalog.faiss",
-  "meta": "data\\index\\catalog_meta.jsonl",
-  "bm25": "data\\index\\catalog_bm25.pkl"
-}
