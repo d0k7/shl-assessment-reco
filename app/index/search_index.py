@@ -9,29 +9,30 @@ from typing import Any, Dict, List, Optional
 from rank_bm25 import BM25Okapi
 
 CATALOG_PATH = Path("data/catalog.jsonl")
+
 _WORD_RE = re.compile(r"[a-z0-9]+")
 
-# Stopwords to reduce generic JD noise dominating BM25
+# Keep this small; we don't want to accidentally remove "java" etc.
 _STOPWORDS = {
-    "need", "good", "in", "a", "an", "the", "and", "or", "to", "of", "for", "with",
-    "who", "is", "are", "be", "as", "on", "at", "by", "from",
-    "collaborating", "collaboration", "external", "teams", "team", "stakeholders",
-    "stakeholder", "customers", "customer", "communication", "skills", "skill",
-    "job", "role", "responsibilities", "requirements"
+    "a", "an", "the", "and", "or", "to", "of", "for", "with", "in", "on", "at", "by", "from",
+    "who", "is", "are", "be", "as", "this", "that", "these", "those",
+    "need", "good", "experience", "skills", "skill", "role", "job", "candidate",
 }
 
-# ✅ Skill-gates: if query contains a gate key, we ONLY consider items matching that group
+# HARD skill gates (if query mentions these, restrict candidates)
 _SKILL_GROUPS: Dict[str, List[str]] = {
     "java": ["java", "j2ee", "jee", "spring", "hibernate", "struts", "jdbc", "ejb"],
     "python": ["python", "django", "flask", "fastapi"],
-    "javascript": ["javascript", "js", "node", "nodejs", "react", "angular", "vue"],
+    "javascript": ["javascript", "node", "nodejs", "react", "angular", "vue"],
     "sql": ["sql", "mysql", "postgres", "postgresql", "oracle", "sqlite"],
 }
+
 
 def _tokenize(text: str) -> List[str]:
     t = (text or "").lower()
     toks = _WORD_RE.findall(t)
     return [x for x in toks if x and x not in _STOPWORDS]
+
 
 def _safe_int(x: Any) -> Optional[int]:
     try:
@@ -40,6 +41,7 @@ def _safe_int(x: Any) -> Optional[int]:
         return int(x)
     except Exception:
         return None
+
 
 def _as_bool(x: Any) -> Optional[bool]:
     if x is None:
@@ -53,6 +55,7 @@ def _as_bool(x: Any) -> Optional[bool]:
         return False
     return None
 
+
 def _as_list_str(x: Any) -> List[str]:
     if x is None:
         return []
@@ -65,15 +68,18 @@ def _as_list_str(x: Any) -> List[str]:
         return [p.strip() for p in s.split(",") if p.strip()]
     return [p.strip() for p in s.split() if p.strip()]
 
+
 def _yes_no(x: Optional[bool]) -> str:
     return "Yes" if x is True else "No"
 
+
 def _canonicalize_url(u: str) -> str:
     u = (u or "").strip()
-    # remove trailing slash for consistency
+    # normalize trailing slash so streamlit links don't differ
     if u.endswith("/"):
         u = u[:-1]
     return u
+
 
 @dataclass(frozen=True)
 class CatalogItem:
@@ -85,15 +91,18 @@ class CatalogItem:
     adaptive_support: Optional[bool] = None
     test_type: List[str] = None  # type: ignore[assignment]
 
+
 @dataclass
 class Artifacts:
     items: List[CatalogItem]
     bm25: BM25Okapi
     corpus_tokens: List[List[str]]
-    gate_texts_lower: List[str]  # used for skill-gating
+    # used for gating quickly
+    gate_blob_lower: List[str]
+
 
 def _item_to_text(it: CatalogItem) -> str:
-    # ranking text (repeat name to weight it)
+    # BM25 ranking text; repeat name to weight it a bit
     parts = [
         it.name,
         it.name,
@@ -102,16 +111,20 @@ def _item_to_text(it: CatalogItem) -> str:
     ]
     return "\n".join([p for p in parts if p]).strip()
 
-def _detect_gate(query_tokens: List[str]) -> Optional[str]:
-    qset = set(query_tokens)
+
+def _detect_gate_raw(query: str) -> Optional[str]:
+    q = (query or "").lower()
     for gate, keys in _SKILL_GROUPS.items():
-        if any(k in qset for k in keys):
+        # raw substring detection so it never fails due to tokenization/stopwords
+        if any(k in q for k in keys):
             return gate
     return None
 
-def _matches_gate(text_lower: str, gate: str) -> bool:
+
+def _matches_gate(blob_lower: str, gate: str) -> bool:
     keys = _SKILL_GROUPS.get(gate, [])
-    return any(k in text_lower for k in keys)
+    return any(k in blob_lower for k in keys)
+
 
 def load_artifacts() -> Artifacts:
     if not CATALOG_PATH.exists():
@@ -119,13 +132,14 @@ def load_artifacts() -> Artifacts:
 
     items: List[CatalogItem] = []
     texts: List[str] = []
-    gate_texts_lower: List[str] = []
+    gate_blob_lower: List[str] = []
 
     with open(CATALOG_PATH, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
+
             obj: Dict[str, Any] = json.loads(line)
 
             name = str(obj.get("name", "")).strip()
@@ -158,44 +172,46 @@ def load_artifacts() -> Artifacts:
             )
 
             items.append(it)
+            txt = _item_to_text(it)
+            texts.append(txt)
 
-            t = _item_to_text(it)
-            texts.append(t)
-
-            # gate text: name + description (lower)
-            gate_texts_lower.append(f"{name} {description}".lower())
+            # include url too for gating
+            gate_blob_lower.append(f"{name} {description} {url}".lower())
 
     corpus_tokens = [_tokenize(t) for t in texts]
     bm25 = BM25Okapi(corpus_tokens)
+    return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens, gate_blob_lower=gate_blob_lower)
 
-    return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens, gate_texts_lower=gate_texts_lower)
 
 def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict[str, Any]]:
     q_tokens = _tokenize(query)
     if not q_tokens:
         return []
 
-    gate = _detect_gate(q_tokens)
+    gate = _detect_gate_raw(query)
 
-    # ✅ Candidate selection (this is the key fix)
+    # ✅ HARD candidate filter
     if gate:
-        candidates = [i for i, txt in enumerate(artifacts.gate_texts_lower) if _matches_gate(txt, gate)]
-        # if too few matches, fallback to all
-        if len(candidates) < min(top_k, 5):
+        candidates = [i for i, blob in enumerate(artifacts.gate_blob_lower) if _matches_gate(blob, gate)]
+        # only fallback if literally nothing matches
+        if not candidates:
             candidates = list(range(len(artifacts.items)))
             gate = None
     else:
         candidates = list(range(len(artifacts.items)))
 
+    # Debug: shows in Render logs so you can confirm the gate is applied
+    print(f"[recommend] gate={gate} candidates={len(candidates)} top_k={top_k}")
+
     scores = artifacts.bm25.get_scores(q_tokens)
 
-    # If gated, strongly boost name matches to push Java tests to top
+    # ✅ Extra boost: if the gate keyword appears in NAME, it should outrank generic matches
     if gate:
         keys = _SKILL_GROUPS[gate]
         for i in candidates:
             name_low = artifacts.items[i].name.lower()
             if any(k in name_low for k in keys):
-                scores[i] += 100.0
+                scores[i] += 500.0  # big, on purpose
 
     ranked_idx = sorted(candidates, key=lambda i: scores[i], reverse=True)[:top_k]
 
@@ -214,5 +230,4 @@ def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[D
                 "score": round(float(scores[i]), 6),
             }
         )
-
     return out
