@@ -10,16 +10,34 @@ from rank_bm25 import BM25Okapi
 
 CATALOG_PATH = Path("data/catalog.jsonl")
 
-
-# -----------------------------
-# Text utilities
-# -----------------------------
 _WORD_RE = re.compile(r"[a-z0-9]+")
+
+# Cut description at these boilerplate markers (your catalog has them a LOT)
+_CUTOFF_MARKERS = [
+    "job levels",
+    "languages",
+    "assessment length",
+    "test type",
+    "remote testing",
+    "accelerate your talent strategy",
+]
+
+# Common “role noise” words that appear everywhere in SHL blurbs
+_STOPWORDS = {
+    "need", "good", "collaborating", "collaboration", "external", "teams", "team",
+    "stakeholders", "customer", "customers", "communication", "skills", "role",
+    "job", "levels", "languages", "assessment", "length", "approximate",
+    "completion", "time", "minutes", "test", "type", "remote", "testing",
+    "downloads", "accelerate", "talent", "strategy", "speak", "today",
+    "products", "transform", "our", "new"
+}
 
 
 def _tokenize(text: str) -> List[str]:
-    text = (text or "").lower()
-    return _WORD_RE.findall(text)
+    t = (text or "").lower()
+    toks = _WORD_RE.findall(t)
+    # light stopword removal helps a lot for this dataset
+    return [x for x in toks if x not in _STOPWORDS]
 
 
 def _safe_int(x: Any) -> Optional[int]:
@@ -49,7 +67,6 @@ def _as_list_str(x: Any) -> List[str]:
         return []
     if isinstance(x, list):
         return [str(v) for v in x if v is not None]
-
     s = str(x).strip()
     if not s:
         return []
@@ -62,9 +79,35 @@ def _yes_no(x: Optional[bool]) -> str:
     return "Yes" if x is True else "No"
 
 
-# -----------------------------
-# Data structures
-# -----------------------------
+def _canonicalize_url(u: str) -> str:
+    u = (u or "").strip()
+    # remove trailing slash to avoid duplicates (/view/x and /view/x/)
+    if u.endswith("/"):
+        u = u[:-1]
+    return u
+
+
+def _clean_description(desc: str) -> str:
+    d = (desc or "").strip()
+    if not d:
+        return ""
+    low = d.lower()
+
+    # cut at first boilerplate marker occurrence
+    cut_at = None
+    for m in _CUTOFF_MARKERS:
+        idx = low.find(m)
+        if idx != -1:
+            cut_at = idx if cut_at is None else min(cut_at, idx)
+
+    if cut_at is not None and cut_at > 0:
+        d = d[:cut_at].strip()
+
+    # remove repeated “Description” label noise
+    d = re.sub(r"\bdescription\b", "", d, flags=re.IGNORECASE).strip()
+    return d
+
+
 @dataclass(frozen=True)
 class CatalogItem:
     name: str
@@ -84,18 +127,26 @@ class Artifacts:
 
 
 def _item_to_text(it: CatalogItem) -> str:
-    # This is what BM25 ranks over (keep it compact but informative).
+    """
+    Build the text BM25 ranks over.
+
+    Key trick:
+    - repeat name to weight it higher (BM25 has no per-field weights)
+    - use cleaned description (remove boilerplate)
+    """
+    name = it.name.strip()
+    desc = _clean_description(it.description)
+    types = " ".join(it.test_type or [])
     parts = [
-        it.name,
-        " ".join(it.test_type or []),
-        it.description,
+        name,
+        name,  # weight name more
+        name,  # weight name more
+        types,
+        desc,
     ]
     return "\n".join([p for p in parts if p]).strip()
 
 
-# -----------------------------
-# Load catalog + build BM25
-# -----------------------------
 def load_artifacts() -> Artifacts:
     if not CATALOG_PATH.exists():
         raise FileNotFoundError(f"Missing catalog file: {CATALOG_PATH}")
@@ -112,13 +163,11 @@ def load_artifacts() -> Artifacts:
             obj: Dict[str, Any] = json.loads(line)
 
             name = str(obj.get("name", "")).strip()
-            url = str(obj.get("url", "")).strip()
+            url = _canonicalize_url(str(obj.get("url", "")).strip())
             if not name or not url:
                 continue
 
-            # --- map fields robustly (catalog.jsonl may vary) ---
             description = str(obj.get("description") or obj.get("desc") or "").strip()
-
             duration = _safe_int(
                 obj.get("duration")
                 or obj.get("assessment_length")
@@ -128,7 +177,6 @@ def load_artifacts() -> Artifacts:
 
             remote_support = _as_bool(obj.get("remote_support") or obj.get("remote_testing"))
             adaptive_support = _as_bool(obj.get("adaptive_support") or obj.get("adaptive"))
-
             test_type = _as_list_str(obj.get("test_type") or obj.get("testTypes") or obj.get("type_codes"))
 
             it = CatalogItem(
@@ -150,44 +198,37 @@ def load_artifacts() -> Artifacts:
     return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens)
 
 
-# -----------------------------
-# Recommend
-# -----------------------------
 def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict[str, Any]]:
     q_tokens = _tokenize(query)
     if not q_tokens:
         return []
 
-    # Base BM25 scores
     scores = artifacts.bm25.get_scores(q_tokens)
     qset = set(q_tokens)
 
-    # ✅ Hard-skill boosts:
-    # BM25 may over-rank generic "collaborate / customer / stakeholders" text.
-    # For role queries like "Java developer", we must strongly promote Java items.
+    # Hard-skill boosts (tuned for SHL catalog noise)
     SKILL_BOOST: Dict[str, float] = {
-        "java": 20.0,
-        "j2ee": 20.0,
-        "jee": 20.0,
-        "spring": 10.0,
-        "hibernate": 10.0,
+        "java": 35.0,
+        "j2ee": 25.0,
+        "jee": 25.0,
+        "spring": 15.0,
+        "hibernate": 15.0,
         "struts": 10.0,
+        "jdbc": 10.0,
+        "ejb": 10.0,
     }
 
     for i, it in enumerate(artifacts.items):
-        text = f"{it.name} {it.description}".lower()
+        hay = f"{it.name} {_clean_description(it.description)}".lower()
         for skill, boost in SKILL_BOOST.items():
-            if skill in qset and skill in text:
+            if skill in qset and skill in hay:
                 scores[i] += boost
 
-    # Rank desc and slice
     ranked_idx = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
 
     out: List[Dict[str, Any]] = []
     for i in ranked_idx:
         it = artifacts.items[i]
-        score = float(scores[i])
-
         out.append(
             {
                 "name": it.name,
@@ -197,7 +238,7 @@ def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[D
                 "remote_support": _yes_no(it.remote_support),
                 "adaptive_support": _yes_no(it.adaptive_support),
                 "test_type": it.test_type or [],
-                "score": round(score, 6),
+                "score": round(float(scores[i]), 6),
             }
         )
 
