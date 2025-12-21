@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException
+import os
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.index.bm25_runtime import build_bm25_from_catalog, recommend_bm25
+from app.index.search_index import load_artifacts, recommend_from_query
 from app.schemas.api import RecommendRequest, RecommendResponse, HealthResponse
 
 app = FastAPI(title="SHL Assessment Recommender", version="0.1.0")
@@ -16,24 +17,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 def _startup() -> None:
-    # Render-safe: builds from data/catalog.jsonl in-memory
-    app.state.artifacts = build_bm25_from_catalog()
+    app.state.artifacts = load_artifacts()
+
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the recommendation API!"}
+
 
 @app.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
     return HealthResponse(status="healthy")
 
-@app.post("/recommend", response_model=RecommendResponse)
-def recommend(payload: RecommendRequest) -> RecommendResponse:
-    query = (payload.query or "").strip()
-    if not query:
-        raise HTTPException(status_code=400, detail="query must be non-empty")
 
-    try:
-        recs = recommend_bm25(query=query, top_k=payload.top_k, artifacts=app.state.artifacts)
-        return RecommendResponse(recommended_assessments=recs)
-    except Exception as e:
-        # make the error visible to Streamlit
-        raise HTTPException(status_code=500, detail=f"{type(e).__name__}: {e}")
+@app.get("/version")
+def version():
+    return {
+        "render_git_commit": os.getenv("RENDER_GIT_COMMIT", "unknown"),
+        "render_service_id": os.getenv("RENDER_SERVICE_ID", "unknown"),
+    }
+
+
+@app.post("/recommend", response_model=RecommendResponse)
+def recommend_items(payload: RecommendRequest) -> RecommendResponse:
+    artifacts = app.state.artifacts
+    recs = recommend_from_query(query=payload.query, top_k=payload.top_k, artifacts=artifacts)
+    return RecommendResponse(recommended_assessments=recs)

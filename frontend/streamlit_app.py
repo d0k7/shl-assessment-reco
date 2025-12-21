@@ -38,7 +38,7 @@ if st.button("Recommend"):
         if r.status_code >= 400:
             st.error(f"/recommend failed: {r.status_code}")
             try:
-                st.json(r.json())  # shows FastAPI error detail
+                st.json(r.json())
             except Exception:
                 st.text(r.text)
             st.stop()
@@ -55,7 +55,6 @@ if st.button("Recommend"):
 
     df = pd.DataFrame(recs)
 
-    # Ensure ALL expected columns exist (even if backend misses them)
     expected = [
         "name",
         "url",
@@ -70,13 +69,9 @@ if st.button("Recommend"):
         if c not in df.columns:
             df[c] = ""
 
-    # Make url clickable
     df["url"] = df["url"].apply(lambda u: f"[link]({u})" if isinstance(u, str) and u else "")
-
-    # Score numeric formatting
     df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0).round(6)
 
-    # Force SAME column order everywhere
     df = df[expected]
 
     st.subheader("Recommendations")
