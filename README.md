@@ -31,13 +31,22 @@ POST /recommend
 
 Request body
 
+
+
+
+
 {
   "query": "Need a Java developer who is good in collaborating with external teams and stakeholders.",
   "top_k": 10
 }
 
 
+
+
 Response (example)
+
+
+
 
 {
   "recommended_assessments": [
@@ -53,6 +62,8 @@ Response (example)
     }
   ]
 }
+
+
 
 Approach
 
@@ -86,6 +97,9 @@ Project Structure
 ├── streamlit_app.py                 # Streamlit UI
 ├── requirements.txt                 # Python dependencies
 └── README.md
+
+
+
 
 Run Locally
 1) Backend (FastAPI)
@@ -141,3 +155,4 @@ Author
 Dheeraj (d0k7)
 ```json
 { "status": "ok" }
+
