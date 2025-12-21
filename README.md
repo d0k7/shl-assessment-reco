@@ -153,6 +153,5 @@ Add filters (duration, test_type, remote/adaptive support) in UI.
 Author
 
 Dheeraj (d0k7)
-```json
-{ "status": "ok" }
+
 
