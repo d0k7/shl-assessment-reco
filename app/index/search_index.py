@@ -4,7 +4,7 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from rank_bm25 import BM25Okapi
 
@@ -12,7 +12,7 @@ CATALOG_PATH = Path("data/catalog.jsonl")
 
 _WORD_RE = re.compile(r"[a-z0-9]+")
 
-# Cut description at these boilerplate markers (your catalog has them a LOT)
+# Cut long SHL boilerplate so ranking uses the real “skill” part of the text
 _CUTOFF_MARKERS = [
     "job levels",
     "languages",
@@ -22,21 +22,31 @@ _CUTOFF_MARKERS = [
     "accelerate your talent strategy",
 ]
 
-# Common “role noise” words that appear everywhere in SHL blurbs
+# Generic words that appear everywhere and ruin BM25 relevance
 _STOPWORDS = {
     "need", "good", "collaborating", "collaboration", "external", "teams", "team",
-    "stakeholders", "customer", "customers", "communication", "skills", "role",
-    "job", "levels", "languages", "assessment", "length", "approximate",
-    "completion", "time", "minutes", "test", "type", "remote", "testing",
-    "downloads", "accelerate", "talent", "strategy", "speak", "today",
-    "products", "transform", "our", "new"
+    "stakeholders", "stakeholder", "customer", "customers", "communication",
+    "skills", "skill", "role", "job", "levels", "languages",
+    "assessment", "length", "approximate", "completion", "time", "minutes",
+    "test", "type", "remote", "testing", "downloads",
+    "accelerate", "talent", "strategy", "speak", "today", "products", "transform",
+    "our", "new", "report", "solution"
+}
+
+# ✅ Skill gates: if query contains one of these skill keys, we only return items matching the same group
+# (This makes "Java developer" return Java tests, not random admin/manager tests.)
+_SKILL_GROUPS: Dict[str, List[str]] = {
+    "java": ["java", "j2ee", "jee", "spring", "hibernate", "struts", "jdbc", "ejb"],
+    "python": ["python", "django", "flask", "fastapi"],
+    "javascript": ["javascript", "js", "node", "nodejs", "react", "angular", "vue"],
+    "sql": ["sql", "mysql", "postgres", "postgresql", "oracle", "mongodb"],
+    "aws": ["aws", "ec2", "s3", "lambda", "cloudwatch"],
 }
 
 
 def _tokenize(text: str) -> List[str]:
     t = (text or "").lower()
     toks = _WORD_RE.findall(t)
-    # light stopword removal helps a lot for this dataset
     return [x for x in toks if x not in _STOPWORDS]
 
 
@@ -81,7 +91,7 @@ def _yes_no(x: Optional[bool]) -> str:
 
 def _canonicalize_url(u: str) -> str:
     u = (u or "").strip()
-    # remove trailing slash to avoid duplicates (/view/x and /view/x/)
+    # remove trailing slash to avoid duplicates
     if u.endswith("/"):
         u = u[:-1]
     return u
@@ -93,7 +103,6 @@ def _clean_description(desc: str) -> str:
         return ""
     low = d.lower()
 
-    # cut at first boilerplate marker occurrence
     cut_at = None
     for m in _CUTOFF_MARKERS:
         idx = low.find(m)
@@ -103,9 +112,21 @@ def _clean_description(desc: str) -> str:
     if cut_at is not None and cut_at > 0:
         d = d[:cut_at].strip()
 
-    # remove repeated “Description” label noise
     d = re.sub(r"\bdescription\b", "", d, flags=re.IGNORECASE).strip()
     return d
+
+
+def _detect_skill_gate(query_tokens: List[str]) -> Optional[str]:
+    qset = set(query_tokens)
+    for group, keys in _SKILL_GROUPS.items():
+        if any(k in qset for k in keys):
+            return group
+    return None
+
+
+def _item_matches_skill_group(item_text_lower: str, group: str) -> bool:
+    keys = _SKILL_GROUPS.get(group, [])
+    return any(k in item_text_lower for k in keys)
 
 
 @dataclass(frozen=True)
@@ -124,23 +145,23 @@ class Artifacts:
     items: List[CatalogItem]
     bm25: BM25Okapi
     corpus_tokens: List[List[str]]
+    item_search_texts_lower: List[str]  # for skill-gating
 
 
-def _item_to_text(it: CatalogItem) -> str:
+def _item_to_text_for_ranking(it: CatalogItem) -> str:
     """
-    Build the text BM25 ranks over.
+    BM25 ranking text.
 
-    Key trick:
-    - repeat name to weight it higher (BM25 has no per-field weights)
-    - use cleaned description (remove boilerplate)
+    Trick: repeat name to weight it more.
+    Use cleaned description to avoid SHL boilerplate dominating ranking.
     """
     name = it.name.strip()
     desc = _clean_description(it.description)
     types = " ".join(it.test_type or [])
     parts = [
         name,
-        name,  # weight name more
-        name,  # weight name more
+        name,
+        name,
         types,
         desc,
     ]
@@ -153,6 +174,7 @@ def load_artifacts() -> Artifacts:
 
     items: List[CatalogItem] = []
     texts: List[str] = []
+    item_search_texts_lower: List[str] = []
 
     with open(CATALOG_PATH, "r", encoding="utf-8") as f:
         for line in f:
@@ -190,12 +212,23 @@ def load_artifacts() -> Artifacts:
             )
 
             items.append(it)
-            texts.append(_item_to_text(it))
+
+            ranking_text = _item_to_text_for_ranking(it)
+            texts.append(ranking_text)
+
+            # For gating we use a simpler text: name + cleaned desc
+            gate_text = f"{name} {_clean_description(description)}".lower()
+            item_search_texts_lower.append(gate_text)
 
     corpus_tokens = [_tokenize(t) for t in texts]
     bm25 = BM25Okapi(corpus_tokens)
 
-    return Artifacts(items=items, bm25=bm25, corpus_tokens=corpus_tokens)
+    return Artifacts(
+        items=items,
+        bm25=bm25,
+        corpus_tokens=corpus_tokens,
+        item_search_texts_lower=item_search_texts_lower,
+    )
 
 
 def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[Dict[str, Any]]:
@@ -203,28 +236,35 @@ def recommend_from_query(query: str, top_k: int, artifacts: Artifacts) -> List[D
     if not q_tokens:
         return []
 
+    # ✅ 1) Skill gating (the “one fix” that solves your Java issue)
+    gate = _detect_skill_gate(q_tokens)
+
+    # Candidate indices
+    candidates: List[int]
+    if gate:
+        candidates = [
+            i for i, txt in enumerate(artifacts.item_search_texts_lower)
+            if _item_matches_skill_group(txt, gate)
+        ]
+        # If gate found almost nothing, fallback to full search
+        if len(candidates) < min(top_k, 5):
+            candidates = list(range(len(artifacts.items)))
+            gate = None
+    else:
+        candidates = list(range(len(artifacts.items)))
+
+    # ✅ 2) Rank with BM25, but only among candidates
     scores = artifacts.bm25.get_scores(q_tokens)
-    qset = set(q_tokens)
 
-    # Hard-skill boosts (tuned for SHL catalog noise)
-    SKILL_BOOST: Dict[str, float] = {
-        "java": 35.0,
-        "j2ee": 25.0,
-        "jee": 25.0,
-        "spring": 15.0,
-        "hibernate": 15.0,
-        "struts": 10.0,
-        "jdbc": 10.0,
-        "ejb": 10.0,
-    }
+    # Additional boost: if the gate exists, strongly prefer name matches
+    if gate:
+        keys = _SKILL_GROUPS[gate]
+        for i in candidates:
+            name_low = artifacts.items[i].name.lower()
+            if any(k in name_low for k in keys):
+                scores[i] += 50.0  # name match should dominate
 
-    for i, it in enumerate(artifacts.items):
-        hay = f"{it.name} {_clean_description(it.description)}".lower()
-        for skill, boost in SKILL_BOOST.items():
-            if skill in qset and skill in hay:
-                scores[i] += boost
-
-    ranked_idx = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
+    ranked_idx = sorted(candidates, key=lambda i: scores[i], reverse=True)[:top_k]
 
     out: List[Dict[str, Any]] = []
     for i in ranked_idx:
